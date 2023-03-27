@@ -12,8 +12,24 @@ public class PlayerController : MonoBehaviour
     private Vector3 rotationTarget;
     public bool isPc;
 
+    public GameObject bulletPrefab;
+    public Transform bulletSpawn;
+
     public void OnMove(InputAction.CallbackContext context){
         move = context.ReadValue<Vector2>();
+    }
+
+    public void OnShoot(InputAction.CallbackContext context){
+        // Started, Performed, Canceled <-- Which phase is the best to initialize the firing?
+        if(context.phase == InputActionPhase.Performed) {
+            GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
+                if (bulletScript != null){
+                    bulletScript.SetVelocity(bulletSpawn.forward);
+                } else{
+                    Debug.LogError("Bullet component not found on bullet prefab!");
+                }
+        }
     }
     
     public void OnMouseLook(InputAction.CallbackContext context){
@@ -24,8 +40,8 @@ public class PlayerController : MonoBehaviour
         joystickLook = context.ReadValue<Vector2>();
     }
 
-    private void Start(){
 
+    private void Start(){
     }
     
     private void Update(){
