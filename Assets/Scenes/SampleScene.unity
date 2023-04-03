@@ -567,6 +567,7 @@ GameObject:
   - component: {fileID: 551026061}
   - component: {fileID: 551026064}
   - component: {fileID: 551026063}
+  - component: {fileID: 551026062}
   m_Layer: 0
   m_Name: GunExit
   m_TagString: Untagged
@@ -1714,7 +1715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 2031413185}
   smoothTime: 0.3
-  offset: {x: 0, y: -13, z: 5}
+  offset: {x: 0, y: -11, z: 7}
 --- !u!1 &1917022730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1726,6 +1727,7 @@ GameObject:
   - component: {fileID: 1917022731}
   - component: {fileID: 1917022734}
   - component: {fileID: 1917022733}
+  - component: {fileID: 1917022732}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -1928,9 +1930,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 12
   rotationSpeed: 0.15
+  dashSpeed: 128
   isPc: 1
   bulletPrefab: {fileID: 1850503077362125822, guid: 37aaca4b8fc47fb4d8e794134602bcb8, type: 3}
   bulletSpawn: {fileID: 551026061}
+  dashCooldown: 2
 --- !u!114 &2031413188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2020,6 +2024,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 62e32d7c-667b-457c-a529-d17ac3833aa1
     m_ActionName: Player/Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2031413187}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 406ac5f8-5343-4556-a609-6245270bee57
+    m_ActionName: Player/Dash[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

@@ -8,12 +8,17 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
     public float rotationSpeed;
+    public float dashSpeed;
     private Vector2 move, mouseLook, joystickLook;
     private Vector3 rotationTarget;
     public bool isPc;
 
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
+
+    private ObjectLifetime dashCooldownTimer;
+    [SerializeField] private int dashCooldown;
+    private bool dashTimerActive = false;
 
     public void OnMove(InputAction.CallbackContext context){
         move = context.ReadValue<Vector2>();
@@ -29,6 +34,16 @@ public class PlayerController : MonoBehaviour
                 } else{
                     Debug.LogError("Bullet component not found on bullet prefab!");
                 }
+        }
+    }
+
+    public void OnDash(InputAction.CallbackContext context){
+        if(context.phase == InputActionPhase.Started && !dashTimerActive){
+            Vector3 movement = new Vector3(move.x, 0f, move.y);
+
+            transform.Translate(movement * dashSpeed * Time.deltaTime, Space.World);
+            dashCooldownTimer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
+            dashTimerActive = true;
         }
     }
     
@@ -59,6 +74,12 @@ public class PlayerController : MonoBehaviour
                 movePlayer();
             }else{
                 movePlayerWithAim();
+            }
+        }
+        if(dashTimerActive){
+            if(dashCooldownTimer.GetElapsedTime() > dashCooldown){
+                dashTimerActive = false;
+                Destroy(dashCooldownTimer);
             }
         }
     }
