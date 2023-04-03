@@ -2011,6 +2011,7 @@ GameObject:
   - component: {fileID: 2038833976}
   - component: {fileID: 2038833975}
   - component: {fileID: 2038833974}
+  - component: {fileID: 2038833978}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -2100,6 +2101,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &2038833978
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038833973}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &8312698534235743131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2107,6 +2122,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 632816004691791673, guid: f68a20899d2259342ae6800f02bbfb0e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225042614254495284, guid: f68a20899d2259342ae6800f02bbfb0e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225042614254495284, guid: f68a20899d2259342ae6800f02bbfb0e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225042614254495284, guid: f68a20899d2259342ae6800f02bbfb0e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7823887582156117677, guid: f68a20899d2259342ae6800f02bbfb0e, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -2155,18 +2186,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret
       objectReference: {fileID: 0}
-    - target: {fileID: 8312698534413942951, guid: f68a20899d2259342ae6800f02bbfb0e, type: 3}
-      propertyPath: firePoint
-      value: 
-      objectReference: {fileID: 8312698534235743132}
-    - target: {fileID: 8312698534413942951, guid: f68a20899d2259342ae6800f02bbfb0e, type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 6998890833169974847, guid: 4f5866c618b5fb94d94821ce9a0bd45e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68a20899d2259342ae6800f02bbfb0e, type: 3}
---- !u!4 &8312698534235743132 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5225042614254495284, guid: f68a20899d2259342ae6800f02bbfb0e, type: 3}
-  m_PrefabInstance: {fileID: 8312698534235743131}
-  m_PrefabAsset: {fileID: 0}
