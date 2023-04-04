@@ -12,6 +12,8 @@ public class Bullet : MonoBehaviour
     ObjectLifetime lifetime;
     Rigidbody rb;
 
+    public GameObject impactEffect;
+
     // Start is called before the first frame update
     void Start(){
         lifetime = GetComponent<ObjectLifetime>();
@@ -32,5 +34,18 @@ public class Bullet : MonoBehaviour
 
     public void SetVelocity(Vector3 v){
         velocity = v;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    { 
+        Debug.Log("Collision");
+         if (collision.gameObject.CompareTag("Enemy"))
+        {
+            GameObject effect = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(effect, 2f);
+
+            Destroy(gameObject);
+        }
+
     }
 }

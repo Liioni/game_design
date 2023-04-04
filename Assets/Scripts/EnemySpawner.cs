@@ -17,6 +17,10 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
+    public void setActive(bool isActive){
+        active= isActive;
+    }
+
     void SpawnEnemy() {
 
         Vector3 pos;
