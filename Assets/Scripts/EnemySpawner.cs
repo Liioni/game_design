@@ -26,15 +26,15 @@ public class EnemySpawner : MonoBehaviour
         Vector3 pos;
         if(Random.Range(0,2) == 1) {
             if(Random.Range(0,2) == 1) {
-                pos = new Vector3(-40, 0, Random.Range(-25,25));
+                pos = new Vector3(-40, 1, Random.Range(-25,25));
             } else {
-                pos = new Vector3(40, 0, Random.Range(-25,25));
+                pos = new Vector3(40, 1, Random.Range(-25,25));
             }
         } else {
             if(Random.Range(0,2) == 1) {
-                pos = new Vector3(Random.Range(-40,40), 0, -25);
+                pos = new Vector3(Random.Range(-40,40), 1, -25);
             } else {
-                pos = new Vector3(Random.Range(-40,40), 0, 25);
+                pos = new Vector3(Random.Range(-40,40), 1, 25);
             }
         }
         //GameObject instance = Instantiate(enemy, pos, Quaternion.identity);

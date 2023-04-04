@@ -7,16 +7,24 @@ public class Enemy : MonoBehaviour
     public GameObject target;
     public float health;
     public float movementSpeed;
+    public int points;
+
+    public GameMode gameMode;
 
     // Start is called before the first frame update
     void Start()
     {
-        //target = GameObject.FindGameObjectWithTag("Player");
+        
     }
 
     private void Awake()
     {
-        target = GameObject.FindGameObjectWithTag("Player");
+        gameMode = GameObject.FindObjectOfType<GameMode>();
+        if (gameMode.towerMode) {
+            target = GameObject.FindGameObjectWithTag("Tower");
+        } else {
+            target = GameObject.FindGameObjectWithTag("Player");
+        }
     }
 
     // Update is called once per frame
@@ -28,6 +36,7 @@ public class Enemy : MonoBehaviour
     public void ChaseTarget() {
         if (target == null) { return; }
         Vector3 direction = (target.transform.position - transform.position).normalized;
+        direction.y = 0f;
         transform.position += movementSpeed * Time.deltaTime * direction;
     }
 
@@ -41,11 +50,11 @@ public class Enemy : MonoBehaviour
     {
         // Damage should be based on some variable within the colliding object
         if (collision.gameObject.CompareTag("Bullet")) {
-            TakeDamage(50f);
+            TakeDamage(100f);
             //Debug.Log(health);
         }
         if (collision.gameObject.CompareTag("TurretBullet")) {
-            TakeDamage(10f);
+            TakeDamage(50f);
         }
         Destroy(collision.gameObject);
     }
