@@ -152,7 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4a9db069bf6d166974edb989101a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2031413181}
   enemy: {fileID: 1752452922838114257, guid: 200a1beed42637317b895f1c6295f90e, type: 3}
+  active: 1
   avgTimeBetweenSpawns: 100
 --- !u!4 &40330893
 Transform:
