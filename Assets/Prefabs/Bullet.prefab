@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initial_speed: 0
+  impactEffect: {fileID: 5064743744668288671, guid: 7b79938553feae949a46ff31218abea4, type: 3}
 --- !u!114 &1850503077362125823
 MonoBehaviour:
   m_ObjectHideFlags: 0
