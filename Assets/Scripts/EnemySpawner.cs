@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject player, enemy;
+    //public GameObject player, enemy;
+    public Enemy enemy;
 
     public bool active = true;
     [Range(1, 100)]
@@ -36,10 +37,12 @@ public class EnemySpawner : MonoBehaviour
                 pos = new Vector3(Random.Range(-40,40), 0, 25);
             }
         }
-        GameObject instance = Instantiate(enemy, pos, Quaternion.identity);
+        //GameObject instance = Instantiate(enemy, pos, Quaternion.identity);
         // TODO fix rotation
         // instance.transform.LookAt(player.transform);
-        instance.GetComponent<MoveToObject>().target = player;
+        //instance.GetComponent<MoveToObject>().target = player;
+
+        Instantiate(enemy, pos, Quaternion.identity);
     }
 
     // Update is called once per frame

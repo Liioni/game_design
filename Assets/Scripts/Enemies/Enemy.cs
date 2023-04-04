@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public GameObject target;
     public float health;
@@ -39,10 +39,14 @@ public abstract class Enemy : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            TakeDamage(10f);
+        // Damage should be based on some variable within the colliding object
+        if (collision.gameObject.CompareTag("Bullet")) {
+            TakeDamage(50f);
             //Debug.Log(health);
         }
+        if (collision.gameObject.CompareTag("TurretBullet")) {
+            TakeDamage(10f);
+        }
+        Destroy(collision.gameObject);
     }
 }
