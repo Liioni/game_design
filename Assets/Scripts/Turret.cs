@@ -20,33 +20,56 @@ public class Turret : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {   
+    {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
-    //repetitive function that is not called in every frame (too heavy) to find turret targets
-    void UpdateTarget()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+    GameObject GetClosest(GameObject[] enemies) {
         //look for the closest enemy - initialize to infinity
         float shortestDistance = Mathf.Infinity;
-        GameObject nearestEnemy = null;
-        foreach(GameObject enemy in enemies){
+        // Guaranteed to be non-null afterwards as size > 0
+        GameObject target = null;
+        foreach(GameObject enemy in enemies) {
             //store distance of each enemy
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             if(distanceToEnemy < shortestDistance){
                 shortestDistance = distanceToEnemy;
-                nearestEnemy = enemy;
+                target = enemy;
             }
         }
-
-        //we found an enemy and it's in the turret's range
-        if(nearestEnemy != null && shortestDistance <=range){
-            target = nearestEnemy;
-        } else {
+        if(shortestDistance > range)
             target = null;
-        }
+        return target;
+    }
+    //
+    //repetitive function that is not called in every frame (too heavy) to find turret targets
+    void UpdateTarget()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        GameObject nearestEnemy = GetClosest(enemies);
 
+        target = nearestEnemy;
+    }
+
+
+    // Returns relative angle remaining between target and self
+    float Rotate(GameObject target) {
+        //direction is vector that goes from us to target
+        Vector3 direction = target.transform.position - transform.position;
+
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        //only rotate around y axis
+        float angle_abs = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime*turnSpeed).eulerAngles.y;
+        Quaternion rotation = Quaternion.Euler(0f, angle_abs, 0f);
+        float angle_rel = Quaternion.Angle(transform.rotation, rotation);
+        transform.rotation = rotation;
+        return angle_rel;
+    }
+
+    void Shoot(GameObject target) {
+        GameObject instance = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        instance.GetComponent<TurretBullet>().target = target;
+        fireCountdown = 1f/fireRate;
     }
 
     // Update is called once per frame
@@ -61,29 +84,12 @@ public class Turret : MonoBehaviour
         if(target == null)
             return;
 
-        //direction is vector that goes from us to target
-        Vector3 direction = target.transform.position - transform.position;
+        float angle = Rotate(target);
 
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        //only rotate around y axis
-        float angle_abs = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime*turnSpeed).eulerAngles.y;
-        Quaternion rotation = Quaternion.Euler(0f, angle_abs, 0f);
-        float angle_rel = Quaternion.Angle(transform.rotation, rotation);
-        transform.rotation = rotation;
-
-        if(fireCountdown > 0f)
-            return;
-        if(angle_rel < 1) {
-            Shoot();
-            fireCountdown = 1f/fireRate;
+        if(fireCountdown <= 0f && angle < 1) {
+            Shoot(target);
         }
     }
-
-    void Shoot(){
-        GameObject instance = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        instance.GetComponent<TurretBullet>().target = target;
-    }
-
 
     //the range is only drawn when the target is selected
     void OnDrawGizmosSelected()
