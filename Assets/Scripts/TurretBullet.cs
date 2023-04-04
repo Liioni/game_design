@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class TurretBullet : MonoBehaviour
 {
-    private Transform target;
     public float speed = 70f;
     public GameObject impactEffect;
+    public GameObject target;
 
-    public void Chase(Transform _target){
-        //here we cann also add stuff like pass a damage value to the bullet
-        target = _target;
-    }
     // Update is called once per frame
     void Update()
     {
@@ -21,7 +17,7 @@ public class TurretBullet : MonoBehaviour
             return;
         }
 
-        Vector3 dir= target.position - transform.position;
+        Vector3 dir = target.transform.position - transform.position;
         
         //distance that we're going to move this frame
         float frameDistance = speed*Time.deltaTime;
@@ -41,8 +37,7 @@ public class TurretBullet : MonoBehaviour
         GameObject effect = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effect, 2f);
 
-        //TODO: damage enemy
         Destroy(gameObject);
-        
+        Destroy(target);
     }
 }

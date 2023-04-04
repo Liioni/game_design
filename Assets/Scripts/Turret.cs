@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    private Transform target;
+    private GameObject target;
   
     [Header ("Attributes")]
     public float range = 15f;
@@ -40,11 +40,10 @@ public class Turret : MonoBehaviour
             }
         }
 
-
         //we found an enemy and it's in the turret's range
         if(nearestEnemy != null && shortestDistance <=range){
-            target = nearestEnemy.transform;
-        }else{
+            target = nearestEnemy;
+        } else {
             target = null;
         }
 
@@ -53,33 +52,36 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(target == null)
-            return; 
-            
-        //direction is vector that goes from us to target
-        Vector3 direction = target.position - transform.position;
-
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime*turnSpeed).eulerAngles;
-        //only rotate around y axis
-        transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-
-        if(fireCountdown <= 0f){
-            Shoot();
-            fireCountdown = 1f/fireRate;
-        }        
+        // Always reduce cooldown
+        // Look at target if it exists
+        // Shoot if already looking at it
 
         fireCountdown -= Time.deltaTime;
-    
+
+        if(target == null)
+            return;
+
+        //direction is vector that goes from us to target
+        Vector3 direction = target.transform.position - transform.position;
+
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        //only rotate around y axis
+        float angle_abs = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime*turnSpeed).eulerAngles.y;
+        Quaternion rotation = Quaternion.Euler(0f, angle_abs, 0f);
+        float angle_rel = Quaternion.Angle(transform.rotation, rotation);
+        transform.rotation = rotation;
+
+        if(fireCountdown > 0f)
+            return;
+        if(angle_rel < 1) {
+            Shoot();
+            fireCountdown = 1f/fireRate;
+        }
     }
 
     void Shoot(){
-        GameObject bulletGO = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        TurretBullet bullet = bulletGO.GetComponent<TurretBullet>();
-
-        if(bullet !=null){
-            bullet.Chase(target);
-        }
+        GameObject instance = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        instance.GetComponent<TurretBullet>().target = target;
     }
 
 
