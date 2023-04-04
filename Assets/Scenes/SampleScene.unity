@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571328, b: 0.3069218, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 40330893}
   - component: {fileID: 40330892}
   m_Layer: 0
-  m_Name: EnemyManager
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,8 +153,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 5206661030518263330, guid: 6308d1f665acd134cadb28ac5d6359da, type: 3}
+  coin: {fileID: 1850503077362125822, guid: c786bead3e10ebf42b07eb2cb890d820, type: 3}
   active: 1
-  avgTimeBetweenSpawns: 100
+  avgTimeBetweenEnemies: 50
+  timeBetweenCoins: 10
 --- !u!4 &40330893
 Transform:
   m_ObjectHideFlags: 0

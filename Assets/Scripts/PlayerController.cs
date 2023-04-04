@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float rotationSpeed;
     public float dashSpeed;
+    public int score = 0;
     private Vector2 move, mouseLook, joystickLook;
     private Vector3 rotationTarget;
     
@@ -110,6 +111,16 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(move.x, 0f, move.y);
 
         transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
+    }
+
+    void OnTriggerEnter(Collider other) {
+        GameObject target = other.gameObject;
+        if(target.tag != "Coin")
+            return;
+
+        Destroy(target);
+        score++;
+        Debug.Log(score);
     }
 
 }
