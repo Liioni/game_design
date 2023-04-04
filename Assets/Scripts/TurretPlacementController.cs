@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class TurretPlacementController : MonoBehaviour
 {
@@ -8,23 +10,14 @@ public class TurretPlacementController : MonoBehaviour
     [SerializeField]
     private GameObject turretPrefab;
 
-    [SerializeField]
-    private KeyCode newTurretHotkey = KeyCode.LeftShift;
-
-    [SerializeField]
-    private KeyCode releaseTurretHotkey = KeyCode.LeftControl;
-
     private GameObject currentPlaceableTurret;
     private float mouseWheelRotation;
     // Update is called once per frame
     void Update()
     {
-        HandleNewTurretHotkey();   
-
         if(currentPlaceableTurret !=null){
             MoveCurrentPlaceableTurretToMouse();
             RotateFromMouseWheel();
-            CheckRelease();
         }
     }
 
@@ -47,22 +40,17 @@ public class TurretPlacementController : MonoBehaviour
         currentPlaceableTurret.transform.Rotate(Vector3.up, mouseWheelRotation * 10f);
     }
 
-    private void HandleNewTurretHotkey()
-    {
-        if(Input.GetKeyDown(newTurretHotkey)){
-            if(currentPlaceableTurret==null){
-                currentPlaceableTurret = Instantiate(turretPrefab);
-            }
-            else{
-                Destroy(currentPlaceableTurret);
-            }
-                
+    public void OnPicking(InputAction.CallbackContext context){
+        if(currentPlaceableTurret==null && context.phase == InputActionPhase.Performed){
+            currentPlaceableTurret = Instantiate(turretPrefab);
+        }
+        else if(currentPlaceableTurret!=null && context.phase == InputActionPhase.Performed){
+            Destroy(currentPlaceableTurret);
         }
     }
 
-    private void CheckRelease()
-    {
-        if(Input.GetKeyDown(releaseTurretHotkey)){
+    public void OnPlacing(InputAction.CallbackContext context){
+        if(context.phase == InputActionPhase.Performed) {
             currentPlaceableTurret = null;
         }
     }

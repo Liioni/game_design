@@ -163,6 +163,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Building",
+            "id": "5da46e4c-4eb1-45b1-8a8e-c4038a7d9488",
+            "actions": [
+                {
+                    "name": "Placing",
+                    "type": "Button",
+                    "id": "4ba829fa-d854-4223-86f1-142ed9752e24",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Picking",
+                    "type": "Button",
+                    "id": "54565eb8-44df-46a8-89bd-bbcd681e0440",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "968d38a2-acda-4b2f-a13e-5010f73755ea",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Placing",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1781490e-883c-4c6b-8a57-ab8527c104f1",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Picking",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

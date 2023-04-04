@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed;
     private Vector2 move, mouseLook, joystickLook;
     private Vector3 rotationTarget;
+    
     public bool isPc;
 
     public GameObject bulletPrefab;
