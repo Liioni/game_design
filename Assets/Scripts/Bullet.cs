@@ -35,7 +35,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     { 
         Debug.Log("Collision");
-         if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             GameObject effect = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(effect, 2f);
