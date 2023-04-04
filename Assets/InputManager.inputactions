@@ -153,8 +153,30 @@
                 },
                 {
                     "name": "",
+                    "id": "95548296-0c5f-45ac-bb45-f5cc616e7c94",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ad141c44-0122-4ad8-a1a4-1e6bfa3c480f",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6b0d40b7-7fca-42c8-9bc1-165a7751cd70",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
