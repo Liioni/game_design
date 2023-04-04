@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemy;
+    public GameObject player, enemy;
 
-    [Range(0, 100)]
+    public bool active = true;
+    [Range(1, 100)]
     public int avgTimeBetweenSpawns = 100;
 
     // Start is called before the first frame update
@@ -31,14 +32,16 @@ public class EnemySpawner : MonoBehaviour
                 pos = new Vector3(Random.Range(-40,40), 0, 25);
             }
         }
-        // TODO face the player immediately
-        Instantiate(enemy, pos, Quaternion.identity);
+        GameObject instance = Instantiate(enemy, pos, Quaternion.identity);
+        // TODO fix rotation
+        // instance.transform.LookAt(player.transform);
+        instance.GetComponent<MoveToObject>().target = player;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(UnityEngine.Random.Range(0, avgTimeBetweenSpawns) == 0) {
+        if(active && UnityEngine.Random.Range(0, avgTimeBetweenSpawns) == 0) {
             SpawnEnemy();
         }
     }
