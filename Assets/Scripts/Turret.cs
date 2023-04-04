@@ -5,11 +5,13 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     private GameObject target;
-  
+
     [Header ("Attributes")]
     public float range = 15f;
-    public float fireRate = 1f; // bullets/second
-    private float fireCountdown = 0f;
+    public float fireRate = 0.5f; // bursts/second
+    public float burstSize = 3;
+    private float fireCooldown = 0f;
+    private float burstCount = 0;
 
     [Header("Unity Setup Fields")]
     public string enemyTag = "Enemy";
@@ -62,33 +64,42 @@ public class Turret : MonoBehaviour
         float angle_abs = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime*turnSpeed).eulerAngles.y;
         Quaternion rotation = Quaternion.Euler(0f, angle_abs, 0f);
         float angle_rel = Quaternion.Angle(transform.rotation, rotation);
-        transform.rotation = rotation;
+        // Don't turn unless the burst is over. Return angle anyway
+        if(burstCount == 0) {
+            transform.rotation = rotation;
+        }
         return angle_rel;
     }
 
-    void Shoot(GameObject target) {
+    void Shoot(GameObject target, float angle) {
+        if(fireCooldown > 0f || burstCount == 0 && angle > 1) {
+            return;
+        }
+
         GameObject instance = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        instance.GetComponent<TurretBullet>().target = target;
-        fireCountdown = 1f/fireRate;
+        burstCount++;
+
+        // Two thirds on cooldown, one third on burst.
+        // Each shoot in the burst adds 1/9, thus 3/9 for the total burst
+        if(burstCount >= burstSize) {
+            fireCooldown = 2f/3f * 1f/fireRate;
+            burstCount = 0;
+        } else {
+            fireCooldown = 1f/3f * 1f/fireRate / burstSize;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Always reduce cooldown
-        // Look at target if it exists
-        // Shoot if already looking at it
-
-        fireCountdown -= Time.deltaTime;
+        fireCooldown -= Time.deltaTime;
 
         if(target == null)
             return;
 
         float angle = Rotate(target);
 
-        if(fireCountdown <= 0f && angle < 1) {
-            Shoot(target);
-        }
+        Shoot(target, angle);
     }
 
     //the range is only drawn when the target is selected
