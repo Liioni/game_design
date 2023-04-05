@@ -19,6 +19,10 @@ public class Spawner : MonoBehaviour
         cooldown = timeBetweenSpawns;
     }
 
+    public void setActive(bool newVal) {
+        active = newVal;
+    }
+
     Vector3 SpawnOnBorder() {
         Vector3 pos;
         if(Random.Range(0,2) == 1) {
