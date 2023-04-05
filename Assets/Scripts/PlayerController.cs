@@ -9,11 +9,16 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float rotationSpeed;
     public float dashSpeed;
-    public int score = 0;
     private Vector2 move, mouseLook, joystickLook;
     private Vector3 rotationTarget;
     
     public bool isPc;
+    public bool canShoot = false;
+    public int towersAvailable = 1;
+    [SerializeField]
+    private GameObject turretPrefab;
+    private GameObject currentPlaceableTurret;
+    private float mouseWheelRotation;
 
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
@@ -26,6 +31,15 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnShoot(InputAction.CallbackContext context){
+        if(currentPlaceableTurret) {
+            if(context.phase == InputActionPhase.Performed) {
+                currentPlaceableTurret = null;
+                towersAvailable--;
+            }
+            return;
+        }
+        if(!canShoot)
+            return;
         // Started, Performed, Canceled <-- Which phase is the best to initialize the firing?
         if(context.phase == InputActionPhase.Performed) {
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
@@ -61,6 +75,10 @@ public class PlayerController : MonoBehaviour
     }
     
     private void Update(){
+        if(currentPlaceableTurret != null){
+            MoveCurrentPlaceableTurretToMouse();
+            RotateFromMouseWheel();
+        }
         if(isPc){
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(mouseLook);
@@ -119,8 +137,33 @@ public class PlayerController : MonoBehaviour
             return;
 
         Destroy(target);
-        score++;
-        Debug.Log(score);
+
+        GameMode manager = GameObject.FindWithTag("Manager").GetComponent<GameMode>();
+        manager.incrementScore();
     }
 
+    private void MoveCurrentPlaceableTurretToMouse()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitInfo;
+        if(Physics.Raycast(ray, out hitInfo)){
+            currentPlaceableTurret.transform.position = hitInfo.point;
+            currentPlaceableTurret.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
+        }
+    }
+
+    private void RotateFromMouseWheel()
+    {
+        mouseWheelRotation = Input.mouseScrollDelta.y;
+        currentPlaceableTurret.transform.Rotate(Vector3.up, mouseWheelRotation * 10f);
+    }
+
+    public void OnPicking(InputAction.CallbackContext context){
+        if(towersAvailable > 0 && currentPlaceableTurret == null && context.phase == InputActionPhase.Performed){
+            currentPlaceableTurret = Instantiate(turretPrefab);
+        }
+        else if(currentPlaceableTurret != null && context.phase == InputActionPhase.Performed){
+            Destroy(currentPlaceableTurret);
+        }
+    }
 }

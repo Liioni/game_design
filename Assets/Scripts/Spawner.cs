@@ -8,15 +8,21 @@ public class Spawner : MonoBehaviour
 
     public bool active = true;
     public bool onBorder = true;
-    public bool random = false;
     [Range(0.01f, 100.0f)]
     public float timeBetweenSpawns = 1.0f;
-    private float cooldown;
+    private float _cooldown;
+
+    public bool scalesWithDifficulty;
+    public int difficulty = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        cooldown = timeBetweenSpawns;
+        // resetCooldown();
+    }
+
+    public void setActive(bool newVal) {
+        active = newVal;
     }
 
     Vector3 SpawnOnBorder() {
@@ -51,16 +57,23 @@ public class Spawner : MonoBehaviour
         Instantiate(prefab, pos, Quaternion.identity);
     }
 
+    private void addCooldown() {
+        float modifier = timeBetweenSpawns;
+        if(scalesWithDifficulty) {
+            modifier *= Mathf.Pow(2.0f, -difficulty);
+        }
+        _cooldown += modifier;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if(!active)
             return;
-        cooldown -= Time.deltaTime;
-        if(random && UnityEngine.Random.Range(0.0f, 1.0f) < 1.0f / timeBetweenSpawns * Time.deltaTime
-           || !random && cooldown <= 0) {
+        _cooldown -= Time.deltaTime;
+        while(_cooldown <= 0) {
             Spawn();
-            cooldown = timeBetweenSpawns;
+            addCooldown();
         }
     }
 }

@@ -194,51 +194,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &2956193259231717522
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2956193259231717520}
-  - component: {fileID: 2956193259231717523}
-  m_Layer: 0
-  m_Name: TurretPlacementController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2956193259231717520
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2956193259231717522}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2956193259979519550}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2956193259231717523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2956193259231717522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f1f9c1b7fc2bd42aa3988d6d3150b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turretPrefab: {fileID: 8312698534413942944, guid: f68a20899d2259342ae6800f02bbfb0e, type: 3}
 --- !u!1 &2956193259534498518
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +327,6 @@ Transform:
   m_Children:
   - {fileID: 2956193259190696215}
   - {fileID: 2956193259534498519}
-  - {fileID: 2956193259231717520}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -546,25 +500,13 @@ MonoBehaviour:
     m_ActionId: 406ac5f8-5343-4556-a609-6245270bee57
     m_ActionName: Player/Dash[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2956193259231717523}
-        m_TargetAssemblyTypeName: TurretPlacementController, Assembly-CSharp
-        m_MethodName: OnPlacing
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 4ba829fa-d854-4223-86f1-142ed9752e24
-    m_ActionName: Building/Placing[/Mouse/leftButton]
+      m_Calls: []
+    m_ActionId: c914b4db-413a-4bd7-b3ea-496fb482d5af
+    m_ActionName: Player/Placing[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2956193259231717523}
-        m_TargetAssemblyTypeName: TurretPlacementController, Assembly-CSharp
+      - m_Target: {fileID: 2956193259979519493}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnPicking
         m_Mode: 0
         m_Arguments:
@@ -575,11 +517,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 54565eb8-44df-46a8-89bd-bbcd681e0440
-    m_ActionName: Building/Picking[/Mouse/rightButton]
+    m_ActionId: 90b9756b-da7a-4c9e-b085-c38d991d9edf
+    m_ActionName: Player/Picking[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Building
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &2956193259979519493
@@ -597,7 +539,10 @@ MonoBehaviour:
   moveSpeed: 12
   rotationSpeed: 0.15
   dashSpeed: 128
+  score: 0
   isPc: 1
+  canShoot: 0
+  turretPrefab: {fileID: 8312698534413942944, guid: f68a20899d2259342ae6800f02bbfb0e, type: 3}
   bulletPrefab: {fileID: 1850503077362125822, guid: 37aaca4b8fc47fb4d8e794134602bcb8, type: 3}
   bulletSpawn: {fileID: 2956193258846866481}
   dashCooldown: 2
