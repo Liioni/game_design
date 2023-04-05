@@ -15,6 +15,24 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Placing",
+                    "type": "Button",
+                    "id": "c914b4db-413a-4bd7-b3ea-496fb482d5af",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Picking",
+                    "type": "Button",
+                    "id": "90b9756b-da7a-4c9e-b085-c38d991d9edf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "mouseLook",
                     "type": "Value",
                     "id": "97d0ac82-0143-4720-bd65-d950b24dbb39",
@@ -183,52 +201,26 @@
                     "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Building",
-            "id": "5da46e4c-4eb1-45b1-8a8e-c4038a7d9488",
-            "actions": [
-                {
-                    "name": "Placing",
-                    "type": "Button",
-                    "id": "4ba829fa-d854-4223-86f1-142ed9752e24",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Picking",
-                    "type": "Button",
-                    "id": "54565eb8-44df-46a8-89bd-bbcd681e0440",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "968d38a2-acda-4b2f-a13e-5010f73755ea",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Placing",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "1781490e-883c-4c6b-8a57-ab8527c104f1",
+                    "id": "faf28c5a-5a6d-4f4c-93bb-062be3e33560",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Picking",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8e397076-4d21-4ae6-8766-47c0b9eb571b",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Placing",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
