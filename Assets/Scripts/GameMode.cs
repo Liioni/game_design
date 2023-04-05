@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMode : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class GameMode : MonoBehaviour
         setActiveWave(_activeWave);
     }
 
-    public void incrementScore(){
+    public void incrementScore() {
         score++;
         if(score % 3 == 0) {
             setActiveWave(false);
@@ -44,6 +45,10 @@ public class GameMode : MonoBehaviour
             }
         }
         Debug.Log(score);
+    }
+
+    public void Loose() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void Update() {

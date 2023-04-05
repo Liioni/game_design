@@ -43,12 +43,6 @@ public class PlayerController : MonoBehaviour
         // Started, Performed, Canceled <-- Which phase is the best to initialize the firing?
         if(context.phase == InputActionPhase.Performed) {
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-            Bullet bulletScript = bullet.GetComponent<Bullet>();
-                if (bulletScript != null){
-                    bulletScript.SetVelocity(bulletSpawn.forward);
-                } else{
-                    Debug.LogError("Bullet component not found on bullet prefab!");
-                }
         }
     }
 
@@ -133,13 +127,22 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         GameObject target = other.gameObject;
-        if(target.tag != "Coin")
+        if (target.tag == "Enemy") {
+            switch (GetComponent<Health>().TakeDamage(1)) {
+                case HitResult.Invuln:
+                    break;
+                case HitResult.Hit:
+                    break;
+                case HitResult.Dead:
+                    GameObject.FindWithTag("Manager").GetComponent<GameMode>().Loose();
+                    break;
+            }
             return;
-
-        Destroy(target);
-
-        GameMode manager = GameObject.FindWithTag("Manager").GetComponent<GameMode>();
-        manager.incrementScore();
+        }
+        if(target.tag == "Coin") {
+            Destroy(target);
+            GameObject.FindWithTag("Manager").GetComponent<GameMode>().incrementScore();
+        }
     }
 
     private void MoveCurrentPlaceableTurretToMouse()
