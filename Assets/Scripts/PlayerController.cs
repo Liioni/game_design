@@ -165,6 +165,7 @@ public class PlayerController : MonoBehaviour
     public void OnPicking(InputAction.CallbackContext context){
         if(towersAvailable - towersPlaced > 0 && currentPlaceableTurret == null && context.phase == InputActionPhase.Performed){
             currentPlaceableTurret = Instantiate(turretPrefab);
+            currentPlaceableTurret.GetComponent<Turret>().burstSize = 2 + towersAvailable;
         }
         else if(currentPlaceableTurret != null && context.phase == InputActionPhase.Performed){
             Destroy(currentPlaceableTurret);

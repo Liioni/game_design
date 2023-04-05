@@ -50,7 +50,7 @@ public class GameMode : MonoBehaviour
         score++;
         if(score % 3 == 0) {
             setActiveWave(false);
-            GameObject.FindWithTag("Player").GetComponent<PlayerController>().towersAvailable = score / 3;
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().towersAvailable = 1 + score / 3;
             foreach(var script in waveSpawners) {
                 script.difficulty++;
             }
