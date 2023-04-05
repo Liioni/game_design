@@ -16,6 +16,16 @@ public class Health : MonoBehaviour
     public float invulnDuration = 1f;
     private ObjectLifetime invulnTimer;
 
+    IEnumerator Blink() {
+        while(invulnTimer) {
+            gameObject.GetComponent<Renderer>().enabled = false;
+            yield return new WaitForSeconds(0.2f);
+            gameObject.GetComponent<Renderer>().enabled = true;
+            yield return new WaitForSeconds(0.2f);
+        }
+        gameObject.GetComponent<Renderer>().enabled = true;
+    }
+
     public HitResult TakeDamage(int damage) {
         if(invulnTimer)
             return HitResult.Invuln;
@@ -29,6 +39,8 @@ public class Health : MonoBehaviour
         }
         //Vector3 pushbackDirection = collision.contacts[0].normal;
         //rb.AddForce(pushbackDirection.normalized * 5f, ForceMode.Impulse);
+
+        StartCoroutine(Blink());
         return HitResult.Hit;
     }
 }
