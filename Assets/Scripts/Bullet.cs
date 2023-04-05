@@ -4,44 +4,30 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float initial_speed;
-    private Vector3 velocity;
-    private bool velocity_set = false;
-
-    ObjectLifetime lifetime;
-    Rigidbody rb;
+    public float initial_speed = 70f;
 
     public GameObject impactEffect;
 
-    // Start is called before the first frame update
     void Start(){
-        lifetime = GetComponent<ObjectLifetime>();
-        rb = GetComponent<Rigidbody>();
-        initial_speed = 15f;
-    }
-
-    // Update is called once per frame
-    void Update(){
-        if(rb != null && !velocity_set){
-            rb.velocity = velocity * initial_speed;
-            velocity_set = true;
-        }
-    }
-
-    public void SetVelocity(Vector3 v){
-        velocity = v;
+        GetComponent<Rigidbody>().velocity = transform.forward * initial_speed;
     }
 
     private void OnCollisionEnter(Collision collision)
-    { 
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
+    {
+        GameObject target = collision.gameObject;
+        if (target.tag == "Enemy") {
+            switch (target.GetComponent<Health>().TakeDamage(1)) {
+                case HitResult.Invuln:
+                    break;
+                case HitResult.Hit:
+                    break;
+                case HitResult.Dead:
+                    Destroy(target);
+                    break;
+            }
             GameObject effect = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(effect, 2f);
-
+            Destroy(effect, 1.5f);
             Destroy(gameObject);
-            Destroy(collision.gameObject);
         }
-
     }
 }

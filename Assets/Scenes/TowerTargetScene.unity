@@ -964,6 +964,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2450746465823343343, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2956193259979519492, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1020,6 +1024,10 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2956193259979519547, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2956193259979519550, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1064,7 +1072,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2073416680289664769, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
 --- !u!1 &1808597857 stripped
 GameObject:

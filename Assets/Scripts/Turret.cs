@@ -63,16 +63,16 @@ public class Turret : MonoBehaviour
         //only rotate around y axis
         float angle_abs = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime*turnSpeed).eulerAngles.y;
         Quaternion rotation = Quaternion.Euler(0f, angle_abs, 0f);
-        float angle_rel = Quaternion.Angle(transform.rotation, rotation);
+        float angle_rel = lookRotation.eulerAngles.y - transform.rotation.eulerAngles.y;
         // Don't turn unless the burst is over. Return angle anyway
         if(burstCount == 0) {
             transform.rotation = rotation;
         }
-        return angle_rel;
+        return Mathf.Abs(angle_rel);
     }
 
-    void Shoot(GameObject target, float angle) {
-        if(fireCooldown > 0f || burstCount == 0 && angle > 1) {
+    void Shoot(float angle) {
+        if(fireCooldown > 0f || burstCount == 0 && angle > 3) {
             return;
         }
 
@@ -94,12 +94,15 @@ public class Turret : MonoBehaviour
     {
         fireCooldown -= Time.deltaTime;
 
-        if(target == null)
+        // Fire burst to the end even without target
+        if(target == null && burstCount == 0)
             return;
 
-        float angle = Rotate(target);
+        float angle = 0f;
+        if(target != null)
+            angle = Rotate(target);
 
-        Shoot(target, angle);
+        Shoot(angle);
     }
 
     //the range is only drawn when the target is selected

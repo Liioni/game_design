@@ -5,11 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public GameObject target;
-    public float health;
     public float movementSpeed;
-    public int points;
-
-    public GameMode gameMode;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +15,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        gameMode = GameObject.FindObjectOfType<GameMode>();
+        var gameMode = GameObject.FindObjectOfType<GameMode>();
         if (gameMode.towerMode) {
             target = GameObject.FindGameObjectWithTag("Tower");
         } else {
@@ -38,26 +34,5 @@ public class Enemy : MonoBehaviour
         Vector3 direction = (target.transform.position - transform.position).normalized;
         direction.y = 0f;
         transform.position += movementSpeed * Time.deltaTime * direction;
-    }
-
-    public void TakeDamage(float damage) {
-        health -= damage;
-        if (health <= 0) {
-            Destroy(gameObject);
-            // GameObject.FindGameObjectWithTag("Manager").GetComponent<GameMode>().incrementKillCount();
-        }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        // Damage should be based on some variable within the colliding object
-        if (collision.gameObject.CompareTag("Bullet")) {
-            TakeDamage(100f);
-            Destroy(collision.gameObject);
-            //Debug.Log(health);
-        }
-        if (collision.gameObject.CompareTag("TurretBullet")) {
-            TakeDamage(50f);
-            Destroy(collision.gameObject);
-        }
     }
 }

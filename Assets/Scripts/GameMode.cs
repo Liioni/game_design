@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMode : MonoBehaviour
 {
@@ -16,6 +17,17 @@ public class GameMode : MonoBehaviour
         _activeWave = newVal;
         foreach(var script in waveSpawners) {
             script.setActive(newVal);
+        }
+        if(!newVal) {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin");
+            foreach(GameObject x in enemies) {
+                Destroy(x);
+            }
+            foreach(GameObject x in coins) {
+                Destroy(x);
+            }
+
         }
         if(towerMode && newVal) {
             if(timer) Destroy(timer);
@@ -34,16 +46,20 @@ public class GameMode : MonoBehaviour
         setActiveWave(_activeWave);
     }
 
-    public void incrementScore(){
+    public void incrementScore() {
         score++;
         if(score % 3 == 0) {
             setActiveWave(false);
-            GameObject.FindWithTag("Player").GetComponent<PlayerController>().towersAvailable++;
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().towersAvailable = 1 + score / 3;
             foreach(var script in waveSpawners) {
                 script.difficulty++;
             }
         }
         Debug.Log(score);
+    }
+
+    public void Loose() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void Update() {

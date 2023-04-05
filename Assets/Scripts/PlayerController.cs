@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public bool isPc;
     public bool canShoot = false;
     public int towersAvailable = 1;
+    private int towersPlaced = 0;
     [SerializeField]
     private GameObject turretPrefab;
     private GameObject currentPlaceableTurret;
@@ -34,7 +35,7 @@ public class PlayerController : MonoBehaviour
         if(currentPlaceableTurret) {
             if(context.phase == InputActionPhase.Performed) {
                 currentPlaceableTurret = null;
-                towersAvailable--;
+                towersPlaced++;
             }
             return;
         }
@@ -43,12 +44,6 @@ public class PlayerController : MonoBehaviour
         // Started, Performed, Canceled <-- Which phase is the best to initialize the firing?
         if(context.phase == InputActionPhase.Performed) {
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-            Bullet bulletScript = bullet.GetComponent<Bullet>();
-                if (bulletScript != null){
-                    bulletScript.SetVelocity(bulletSpawn.forward);
-                } else{
-                    Debug.LogError("Bullet component not found on bullet prefab!");
-                }
         }
     }
 
@@ -133,13 +128,22 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         GameObject target = other.gameObject;
-        if(target.tag != "Coin")
+        if (target.tag == "Enemy") {
+            switch (GetComponent<Health>().TakeDamage(1)) {
+                case HitResult.Invuln:
+                    break;
+                case HitResult.Hit:
+                    break;
+                case HitResult.Dead:
+                    GameObject.FindWithTag("Manager").GetComponent<GameMode>().Loose();
+                    break;
+            }
             return;
-
-        Destroy(target);
-
-        GameMode manager = GameObject.FindWithTag("Manager").GetComponent<GameMode>();
-        manager.incrementScore();
+        }
+        if(target.tag == "Coin") {
+            Destroy(target);
+            GameObject.FindWithTag("Manager").GetComponent<GameMode>().incrementScore();
+        }
     }
 
     private void MoveCurrentPlaceableTurretToMouse()
@@ -159,8 +163,9 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnPicking(InputAction.CallbackContext context){
-        if(towersAvailable > 0 && currentPlaceableTurret == null && context.phase == InputActionPhase.Performed){
+        if(towersAvailable - towersPlaced > 0 && currentPlaceableTurret == null && context.phase == InputActionPhase.Performed){
             currentPlaceableTurret = Instantiate(turretPrefab);
+            currentPlaceableTurret.GetComponent<Turret>().burstSize = 2 + towersAvailable;
         }
         else if(currentPlaceableTurret != null && context.phase == InputActionPhase.Performed){
             Destroy(currentPlaceableTurret);
