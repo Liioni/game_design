@@ -8,6 +8,7 @@ public class GameMode : MonoBehaviour
     public bool towerMode;
     private bool _activeWave = false;
     public int score = 0;
+    public ObjectLifetime timer;
 
     public List<Spawner> waveSpawners;
 
@@ -15,6 +16,12 @@ public class GameMode : MonoBehaviour
         _activeWave = newVal;
         foreach(var script in waveSpawners) {
             script.setActive(newVal);
+        }
+        if(towerMode && newVal) {
+            if(timer) Destroy(timer);
+            timer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
+            timer.destroyGameObject = false;
+            timer.life_span = 30;
         }
     }
 
@@ -31,7 +38,20 @@ public class GameMode : MonoBehaviour
         score++;
         if(score % 3 == 0) {
             setActiveWave(false);
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().towersAvailable++;
+            foreach(var script in waveSpawners) {
+                script.difficulty++;
+            }
         }
         Debug.Log(score);
+    }
+
+    void Update() {
+        if(!timer && _activeWave) {
+            setActiveWave(false);
+            incrementScore();
+            incrementScore();
+            incrementScore();
+        }
     }
 }

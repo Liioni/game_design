@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     
     public bool isPc;
     public bool canShoot = false;
+    public int towersAvailable = 1;
     [SerializeField]
     private GameObject turretPrefab;
     private GameObject currentPlaceableTurret;
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
         if(currentPlaceableTurret) {
             if(context.phase == InputActionPhase.Performed) {
                 currentPlaceableTurret = null;
+                towersAvailable--;
             }
             return;
         }
@@ -73,7 +75,7 @@ public class PlayerController : MonoBehaviour
     }
     
     private void Update(){
-        if(currentPlaceableTurret !=null){
+        if(currentPlaceableTurret != null){
             MoveCurrentPlaceableTurretToMouse();
             RotateFromMouseWheel();
         }
@@ -157,10 +159,10 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnPicking(InputAction.CallbackContext context){
-        if(currentPlaceableTurret == null && context.phase == InputActionPhase.Performed){
+        if(towersAvailable > 0 && currentPlaceableTurret == null && context.phase == InputActionPhase.Performed){
             currentPlaceableTurret = Instantiate(turretPrefab);
         }
-        else if(currentPlaceableTurret!=null && context.phase == InputActionPhase.Performed){
+        else if(currentPlaceableTurret != null && context.phase == InputActionPhase.Performed){
             Destroy(currentPlaceableTurret);
         }
     }

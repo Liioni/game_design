@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour
         health -= damage;
         if (health <= 0) {
             Destroy(gameObject);
+            // GameObject.FindGameObjectWithTag("Manager").GetComponent<GameMode>().incrementKillCount();
         }
     }
     private void OnCollisionEnter(Collision collision)
