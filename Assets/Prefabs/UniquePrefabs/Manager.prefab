@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3396104884447338360}
   - component: {fileID: 3396104884447338361}
+  - component: {fileID: -3876222309146799386}
   - component: {fileID: 3396104884447338363}
   - component: {fileID: 3396104884447338362}
   m_Layer: 0
@@ -47,10 +48,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 5206661030518263335, guid: 6308d1f665acd134cadb28ac5d6359da, type: 3}
-  active: 1
+  active: 0
   onBorder: 1
-  random: 1
-  timeBetweenSpawns: 3
+  timeBetweenSpawns: 6
+  scalesWithDifficulty: 0
+  difficulty: 0
+--- !u!114 &-3876222309146799386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3396104884447338366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d4a9db069bf6d166974edb989101a2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2316001390862386333, guid: 3302e577cad70ce4799874876b564d82, type: 3}
+  active: 0
+  onBorder: 1
+  timeBetweenSpawns: 6
+  scalesWithDifficulty: 0
+  difficulty: 0
 --- !u!114 &3396104884447338363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,10 +84,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1850503077362125822, guid: c786bead3e10ebf42b07eb2cb890d820, type: 3}
-  active: 1
+  active: 0
   onBorder: 0
-  random: 0
   timeBetweenSpawns: 10
+  scalesWithDifficulty: 0
+  difficulty: 0
 --- !u!114 &3396104884447338362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,3 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerMode: 0
+  score: 0
+  timer: {fileID: 0}
+  waveSpawners:
+  - {fileID: 3396104884447338361}
+  - {fileID: -3876222309146799386}
+  - {fileID: 3396104884447338363}

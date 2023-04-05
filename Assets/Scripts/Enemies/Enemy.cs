@@ -23,12 +23,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void ChaseTarget() {
         if (target == null) { return; }
         Vector3 direction = (target.transform.position - transform.position).normalized;

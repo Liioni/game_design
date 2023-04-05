@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &40330892 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3396104884447338361, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
-  m_PrefabInstance: {fileID: 3396104884474657269}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d4a9db069bf6d166974edb989101a2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &40330893 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3396104884447338362, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
@@ -143,17 +132,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad0a53ed37ec3a34a92f4aee3df77bb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &40330894 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3396104884447338363, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
-  m_PrefabInstance: {fileID: 3396104884474657269}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d4a9db069bf6d166974edb989101a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &99509036
@@ -1177,34 +1155,6 @@ PrefabInstance:
       propertyPath: scalesWithDifficulty
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3396104884447338362, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
-      propertyPath: score
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3396104884447338362, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
-      propertyPath: spawners.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3396104884447338362, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
-      propertyPath: spawners.Array.data[0]
-      value: 
-      objectReference: {fileID: 40330892}
-    - target: {fileID: 3396104884447338362, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
-      propertyPath: spawners.Array.data[1]
-      value: 
-      objectReference: {fileID: 40330894}
-    - target: {fileID: 3396104884447338362, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
-      propertyPath: waveSpawners.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3396104884447338362, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
-      propertyPath: waveSpawners.Array.data[0]
-      value: 
-      objectReference: {fileID: 40330892}
-    - target: {fileID: 3396104884447338362, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
-      propertyPath: waveSpawners.Array.data[1]
-      value: 
-      objectReference: {fileID: 40330894}
     - target: {fileID: 3396104884447338366, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
       propertyPath: m_Name
       value: Manager

@@ -7,7 +7,6 @@ public class EnemyType2 : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        movementSpeed = 0;
     }
 
     // Update is called once per frame
