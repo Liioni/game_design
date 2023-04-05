@@ -9,6 +9,7 @@ TagManager:
   - Turret
   - Bullet
   - Tower
+  - Coin
   layers:
   - Default
   - TransparentFX
