@@ -49,7 +49,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context){
         if(context.phase == InputActionPhase.Started && dashCooldownTimer == null){
-            transform.Translate(transform.forward * dashDistance, Space.World);
+            Vector3 movement = new Vector3(move.x, 0f, move.y);
+
+            transform.Translate(Vector3.Normalize(movement) * dashDistance, Space.World);
             dashCooldownTimer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
             dashCooldownTimer.destroyGameObject = false;
         }
