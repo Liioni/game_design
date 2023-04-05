@@ -47,7 +47,7 @@ public class GameMode : MonoBehaviour
     }
 
     void Update() {
-        if(!timer && _activeWave) {
+        if(towerMode && !timer && _activeWave) {
             setActiveWave(false);
             incrementScore();
             incrementScore();
