@@ -18,6 +18,17 @@ public class GameMode : MonoBehaviour
         foreach(var script in waveSpawners) {
             script.setActive(newVal);
         }
+        if(!newVal) {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin");
+            foreach(GameObject x in enemies) {
+                Destroy(x);
+            }
+            foreach(GameObject x in coins) {
+                Destroy(x);
+            }
+
+        }
         if(towerMode && newVal) {
             if(timer) Destroy(timer);
             timer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
