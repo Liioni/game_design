@@ -37,9 +37,7 @@ public class EnemySpawner : MonoBehaviour
                 pos = new Vector3(Random.Range(-35,35), 1, 23);
             }
         }
-        GameObject instance = Instantiate(enemy, pos, Quaternion.identity);
-        // TODO fix rotation
-        // instance.transform.LookAt(player.transform);
+        Instantiate(enemy, pos, Quaternion.identity);
         //instance.GetComponent<MoveToObject>().target = player;
     }
 
