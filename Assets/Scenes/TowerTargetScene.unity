@@ -996,7 +996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4c05f14df0be34889674b6d3d5c9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1808597863}
   smoothTime: 0.3
   offset: {x: 0, y: -11, z: 7}
 --- !u!1001 &1808597856
@@ -1008,6 +1008,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2956193259979519492, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956193259979519546, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
+      propertyPath: m_DefaultActionMap
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2956193259979519550, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
@@ -1059,6 +1063,11 @@ PrefabInstance:
 --- !u!1 &1808597857 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2956193259979519492, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
+  m_PrefabInstance: {fileID: 1808597856}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1808597863 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2956193259979519550, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
   m_PrefabInstance: {fileID: 1808597856}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2038833973
