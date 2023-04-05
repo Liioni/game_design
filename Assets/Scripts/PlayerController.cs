@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
     public float rotationSpeed;
-    public float dashSpeed;
+    public float dashDistance;
     private Vector2 move, mouseLook, joystickLook;
     private Vector3 rotationTarget;
     
@@ -49,9 +49,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context){
         if(context.phase == InputActionPhase.Started && dashCooldownTimer == null){
-            Vector3 movement = new Vector3(move.x, 0f, move.y);
-
-            transform.Translate(movement * dashSpeed * Time.deltaTime, Space.World);
+            transform.Translate(transform.forward * dashDistance, Space.World);
             dashCooldownTimer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
             dashCooldownTimer.destroyGameObject = false;
         }
