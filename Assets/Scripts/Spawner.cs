@@ -2,26 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
-    public GameObject enemy, coin;
+    public GameObject prefab;
 
     public bool active = true;
-    [Range(1, 100)]
-    public int avgTimeBetweenEnemies = 50;
-    [Range(1, 100)]
-    public int timeBetweenCoins = 10;
-
-    private float coinCooldown = 0.0f;
+    public bool onBorder = true;
+    public bool random = false;
+    [Range(0.01f, 100.0f)]
+    public float timeBetweenSpawns = 1.0f;
+    private float cooldown;
 
     // Start is called before the first frame update
     void Start()
     {
-
-    }
-
-    public void setActive(bool isActive){
-        active = isActive;
+        cooldown = timeBetweenSpawns;
     }
 
     Vector3 SpawnOnBorder() {
@@ -46,32 +41,26 @@ public class EnemySpawner : MonoBehaviour
         return new Vector3(Random.Range(-35,35), 0, Random.Range(-23,23));
     }
 
-    void SpawnEnemy(bool borderOnly) {
+    void Spawn() {
         Vector3 pos;
-        if(borderOnly) {
+        if(onBorder) {
             pos = SpawnOnBorder();
         } else {
             pos = SpawnEverywhere();
         }
-        Instantiate(enemy, pos, Quaternion.identity);
-    }
-
-    void SpawnCoin() {
-        Vector3 pos = SpawnEverywhere();
-        GameObject instance = Instantiate(coin, pos, Quaternion.identity);
+        Instantiate(prefab, pos, Quaternion.identity);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(active && UnityEngine.Random.Range(0, avgTimeBetweenEnemies) == 0) {
-            SpawnEnemy(true);
-        }
-
-        coinCooldown -= Time.deltaTime;
-        if(active && coinCooldown <= 0) {
-            SpawnCoin();
-            coinCooldown = timeBetweenCoins;
+        if(!active)
+            return;
+        cooldown -= Time.deltaTime;
+        if(random && UnityEngine.Random.Range(0.0f, 1.0f) < 1.0f / timeBetweenSpawns * Time.deltaTime
+           || !random && cooldown <= 0) {
+            Spawn();
+            cooldown = timeBetweenSpawns;
         }
     }
 }

@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 40330893}
   - component: {fileID: 40330892}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: SpawnManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,11 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4a9db069bf6d166974edb989101a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 5206661030518263330, guid: 6308d1f665acd134cadb28ac5d6359da, type: 3}
-  coin: {fileID: 1850503077362125822, guid: c786bead3e10ebf42b07eb2cb890d820, type: 3}
+  prefab: {fileID: 5206661030518263335, guid: 6308d1f665acd134cadb28ac5d6359da, type: 3}
   active: 1
-  avgTimeBetweenEnemies: 50
-  timeBetweenCoins: 10
+  onBorder: 1
+  random: 0
+  timeBetweenSpawns: 1
 --- !u!4 &40330893
 Transform:
   m_ObjectHideFlags: 0
