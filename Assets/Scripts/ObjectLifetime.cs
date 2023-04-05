@@ -3,6 +3,8 @@ using UnityEngine;
 public class ObjectLifetime : MonoBehaviour
 {
     private float elapsedTime;
+    public float life_span = 1.5f;
+    public bool destroyGameObject = true;
 
     void Start()
     {
@@ -12,10 +14,12 @@ public class ObjectLifetime : MonoBehaviour
     void Update()
     {
         elapsedTime += Time.deltaTime;
-    }
-
-    public float GetElapsedTime()
-    {
-        return elapsedTime;
+        if(life_span < elapsedTime){
+            if(destroyGameObject) {
+                Destroy(gameObject);
+            } else {
+                Destroy(this);
+            }
+        }
     }
 }

@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
 
     private ObjectLifetime dashCooldownTimer;
     [SerializeField] private int dashCooldown;
-    private bool dashTimerActive = false;
 
     public void OnMove(InputAction.CallbackContext context){
         move = context.ReadValue<Vector2>();
@@ -39,12 +38,12 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnDash(InputAction.CallbackContext context){
-        if(context.phase == InputActionPhase.Started && !dashTimerActive){
+        if(context.phase == InputActionPhase.Started && dashCooldownTimer == null){
             Vector3 movement = new Vector3(move.x, 0f, move.y);
 
             transform.Translate(movement * dashSpeed * Time.deltaTime, Space.World);
             dashCooldownTimer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
-            dashTimerActive = true;
+            dashCooldownTimer.destroyGameObject = false;
         }
     }
     
@@ -75,12 +74,6 @@ public class PlayerController : MonoBehaviour
                 movePlayer();
             }else{
                 movePlayerWithAim();
-            }
-        }
-        if(dashTimerActive){
-            if(dashCooldownTimer.GetElapsedTime() > dashCooldown){
-                dashTimerActive = false;
-                Destroy(dashCooldownTimer);
             }
         }
     }

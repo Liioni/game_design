@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private float life_span = 1.5f;
     public float initial_speed;
     private Vector3 velocity;
     private bool velocity_set = false;
@@ -27,9 +26,6 @@ public class Bullet : MonoBehaviour
             rb.velocity = velocity * initial_speed;
             velocity_set = true;
         }
-        if(life_span < lifetime.GetElapsedTime()){
-            Destroy(gameObject);
-        }
     }
 
     public void SetVelocity(Vector3 v){
@@ -39,12 +35,13 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     { 
         Debug.Log("Collision");
-         if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             GameObject effect = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(effect, 2f);
 
             Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
 
     }

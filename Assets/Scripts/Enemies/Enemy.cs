@@ -51,11 +51,12 @@ public class Enemy : MonoBehaviour
         // Damage should be based on some variable within the colliding object
         if (collision.gameObject.CompareTag("Bullet")) {
             TakeDamage(100f);
+            Destroy(collision.gameObject);
             //Debug.Log(health);
         }
         if (collision.gameObject.CompareTag("TurretBullet")) {
             TakeDamage(50f);
+            Destroy(collision.gameObject);
         }
-        Destroy(collision.gameObject);
     }
 }

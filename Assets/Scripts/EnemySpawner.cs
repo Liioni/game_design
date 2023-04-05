@@ -26,23 +26,19 @@ public class EnemySpawner : MonoBehaviour
         Vector3 pos;
         if(Random.Range(0,2) == 1) {
             if(Random.Range(0,2) == 1) {
-                pos = new Vector3(-40, 1, Random.Range(-25,25));
+                pos = new Vector3(-35, 1, Random.Range(-23,23));
             } else {
-                pos = new Vector3(40, 1, Random.Range(-25,25));
+                pos = new Vector3(35, 1, Random.Range(-23,23));
             }
         } else {
             if(Random.Range(0,2) == 1) {
-                pos = new Vector3(Random.Range(-40,40), 1, -25);
+                pos = new Vector3(Random.Range(-35,35), 1, -23);
             } else {
-                pos = new Vector3(Random.Range(-40,40), 1, 25);
+                pos = new Vector3(Random.Range(-35,35), 1, 23);
             }
         }
-        //GameObject instance = Instantiate(enemy, pos, Quaternion.identity);
-        // TODO fix rotation
-        // instance.transform.LookAt(player.transform);
-        //instance.GetComponent<MoveToObject>().target = player;
-
         Instantiate(enemy, pos, Quaternion.identity);
+        //instance.GetComponent<MoveToObject>().target = player;
     }
 
     // Update is called once per frame
