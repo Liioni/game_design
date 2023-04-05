@@ -234,7 +234,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3396104884447338362, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
         m_TargetAssemblyTypeName: GameMode, Assembly-CSharp
         m_MethodName: flipActiveWave
         m_Mode: 1

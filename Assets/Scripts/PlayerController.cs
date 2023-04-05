@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float rotationSpeed;
     public float dashSpeed;
-    public int score = 0;
     private Vector2 move, mouseLook, joystickLook;
     private Vector3 rotationTarget;
     
@@ -136,8 +135,9 @@ public class PlayerController : MonoBehaviour
             return;
 
         Destroy(target);
-        score++;
-        Debug.Log(score);
+
+        GameMode manager = GameObject.FindWithTag("Manager").GetComponent<GameMode>();
+        manager.incrementScore();
     }
 
     private void MoveCurrentPlaceableTurretToMouse()

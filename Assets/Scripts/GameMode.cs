@@ -6,22 +6,32 @@ public class GameMode : MonoBehaviour
 {
     [SerializeField]
     public bool towerMode;
-    private bool activeWave = false;
+    private bool _activeWave = false;
+    public int score = 0;
 
     public List<Spawner> waveSpawners;
 
     void setActiveWave(bool newVal) {
-        activeWave = newVal;
+        _activeWave = newVal;
         foreach(var script in waveSpawners) {
             script.setActive(newVal);
         }
     }
 
     public void flipActiveWave() {
-        setActiveWave(!activeWave);
+        setActiveWave(!_activeWave);
     }
 
     void Start() {
-        setActiveWave(activeWave);
+        // To ensure each spawner is set correctly
+        setActiveWave(_activeWave);
+    }
+
+    public void incrementScore(){
+        score++;
+        if(score % 3 == 0) {
+            setActiveWave(false);
+        }
+        Debug.Log(score);
     }
 }

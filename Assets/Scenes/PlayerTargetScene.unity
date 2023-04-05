@@ -1245,12 +1245,16 @@ PrefabInstance:
       objectReference: {fileID: 40330894}
     - target: {fileID: 3396104884447338362, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
       propertyPath: waveSpawners.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3396104884447338362, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
       propertyPath: waveSpawners.Array.data[0]
       value: 
       objectReference: {fileID: 40330892}
+    - target: {fileID: 3396104884447338362, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
+      propertyPath: waveSpawners.Array.data[1]
+      value: 
+      objectReference: {fileID: 40330894}
     - target: {fileID: 3396104884447338366, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
       propertyPath: m_Name
       value: Manager
