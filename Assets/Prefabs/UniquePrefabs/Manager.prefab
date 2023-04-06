@@ -53,6 +53,8 @@ MonoBehaviour:
   timeBetweenSpawns: 6
   scalesWithDifficulty: 0
   difficulty: 0
+  telegraphPrefab: {fileID: 1850503077362125822, guid: 4ca11379b38052326b462d1b6654d4b0, type: 3}
+  telegraphTime: 0.5
 --- !u!114 &-3876222309146799386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,6 +73,8 @@ MonoBehaviour:
   timeBetweenSpawns: 6
   scalesWithDifficulty: 0
   difficulty: 0
+  telegraphPrefab: {fileID: 1850503077362125822, guid: 4ca11379b38052326b462d1b6654d4b0, type: 3}
+  telegraphTime: 0.5
 --- !u!114 &3396104884447338363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +93,8 @@ MonoBehaviour:
   timeBetweenSpawns: 10
   scalesWithDifficulty: 0
   difficulty: 0
+  telegraphPrefab: {fileID: 0}
+  telegraphTime: 0.5
 --- !u!114 &3396104884447338362
 MonoBehaviour:
   m_ObjectHideFlags: 0
