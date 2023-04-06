@@ -58,7 +58,8 @@ public class Spawner : MonoBehaviour
             pos = SpawnEverywhere();
         }
         if(telegraphPrefab) {
-            GameObject marker = Instantiate(telegraphPrefab, pos, Quaternion.identity);
+            Vector3 offset = new Vector3(0f,2f,0f);
+            GameObject marker = Instantiate(telegraphPrefab, pos + offset, Quaternion.identity);
             yield return new WaitForSeconds(telegraphTime);
             Destroy(marker);
         }
