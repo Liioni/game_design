@@ -15,6 +15,9 @@ public class Spawner : MonoBehaviour
     public bool scalesWithDifficulty;
     public int difficulty = 0;
 
+    public GameObject telegraphPrefab;
+    public float telegraphTime = 0.5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,12 +50,18 @@ public class Spawner : MonoBehaviour
         return new Vector3(Random.Range(-35,35), 0, Random.Range(-23,23));
     }
 
-    void Spawn() {
+    IEnumerator Spawn() {
         Vector3 pos;
         if(onBorder) {
             pos = SpawnOnBorder();
         } else {
             pos = SpawnEverywhere();
+        }
+        if(telegraphPrefab) {
+            Vector3 offset = new Vector3(0f,2f,0f);
+            GameObject marker = Instantiate(telegraphPrefab, pos + offset, Quaternion.identity);
+            yield return new WaitForSeconds(telegraphTime);
+            Destroy(marker);
         }
         Instantiate(prefab, pos, Quaternion.identity);
     }
@@ -72,7 +81,7 @@ public class Spawner : MonoBehaviour
             return;
         _cooldown -= Time.deltaTime;
         while(_cooldown <= 0) {
-            Spawn();
+            StartCoroutine(Spawn());
             addCooldown();
         }
     }
