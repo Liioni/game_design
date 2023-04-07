@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dc3ce5239deea264fa26f5de8639b271
+guid: d00f1c656046587469b0291d3d4412ce
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Dreamwood DEMO
+  - Vinque
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
