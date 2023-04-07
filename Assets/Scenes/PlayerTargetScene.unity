@@ -653,6 +653,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
+--- !u!114 &3396104884474657270 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3396104884447338361, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
+  m_PrefabInstance: {fileID: 3396104884474657269}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d4a9db069bf6d166974edb989101a2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5928217654965577182
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -789,6 +800,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 4782363541756830504, guid: 99628d11d63e29945901e3b9da9b872d, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 3396104884474657270}
+    - target: {fileID: 4782363541756830504, guid: 99628d11d63e29945901e3b9da9b872d, type: 3}
+      propertyPath: gamemode
+      value: 
+      objectReference: {fileID: 40330893}
+    - target: {fileID: 4782363541756830504, guid: 99628d11d63e29945901e3b9da9b872d, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1730200143}
     - target: {fileID: 6897183996093816741, guid: 99628d11d63e29945901e3b9da9b872d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
