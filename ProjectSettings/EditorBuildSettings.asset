@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
+    path: Assets/Scenes/Menus/MainMenu.unity
     guid: f1d8406f1976ee843b8be4815be67179
+  - enabled: 1
+    path: Assets/Scenes/Menus/TempStartMenu.unity
+    guid: a88d23d8ffe37584497d6c65049a0d80
   - enabled: 1
     path: Assets/Scenes/PlayerTargetScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/TowerTargetScene.unity
+    guid: d20cac759de3a2f4a90fb4081d6f5d40
   m_configObjects: {}
