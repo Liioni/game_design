@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000015258789}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &181160490
@@ -396,13 +396,13 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 80e7737b78e86f044bc391b30624a826, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -1548325362547722583, guid: 80e7737b78e86f044bc391b30624a826, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4280560942
   m_fontColor: {r: 0.18039216, g: 0.1764706, b: 0.14117648, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -459,7 +459,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &654535039
@@ -1044,6 +1044,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885557404}
   m_CullTransparentMesh: 1
+--- !u!114 &891522484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3738556478213154790, guid: 688b3aa390c2131408273a4bb804716b, type: 3}
+  m_PrefabInstance: {fileID: 3738556478026607186}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1120453915
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,6 +1200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1173518319}
   - component: {fileID: 1173518320}
+  - component: {fileID: 1173518321}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -1231,6 +1243,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7c127923610e743be9703f33e8bc66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1173518321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173518318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c77981509db70547b67641d6d62ede8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingScreen: {fileID: 1821223577}
+  progressBar: {fileID: 891522484}
 --- !u!1 &1273010413
 GameObject:
   m_ObjectHideFlags: 0
@@ -1668,6 +1694,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791384525}
   m_CullTransparentMesh: 1
+--- !u!1 &1821223577 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3738556479428313291, guid: 688b3aa390c2131408273a4bb804716b, type: 3}
+  m_PrefabInstance: {fileID: 3738556478026607186}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2038868267
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,13 +1798,13 @@ MonoBehaviour:
   m_text: OPTIONS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 80e7737b78e86f044bc391b30624a826, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -1548325362547722583, guid: 80e7737b78e86f044bc391b30624a826, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4280560942
   m_fontColor: {r: 0.18039216, g: 0.1764706, b: 0.14117648, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1830,7 +1861,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2045241309
@@ -1976,3 +2007,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067031242}
   m_CullTransparentMesh: 1
+--- !u!1001 &3738556478026607186
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3738556479428313288, guid: 688b3aa390c2131408273a4bb804716b, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738556479428313288, guid: 688b3aa390c2131408273a4bb804716b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 573.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738556479428313288, guid: 688b3aa390c2131408273a4bb804716b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 322.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738556479428313288, guid: 688b3aa390c2131408273a4bb804716b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738556479428313288, guid: 688b3aa390c2131408273a4bb804716b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738556479428313288, guid: 688b3aa390c2131408273a4bb804716b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738556479428313288, guid: 688b3aa390c2131408273a4bb804716b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738556479428313288, guid: 688b3aa390c2131408273a4bb804716b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738556479428313288, guid: 688b3aa390c2131408273a4bb804716b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738556479428313288, guid: 688b3aa390c2131408273a4bb804716b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738556479428313288, guid: 688b3aa390c2131408273a4bb804716b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738556479428313291, guid: 688b3aa390c2131408273a4bb804716b, type: 3}
+      propertyPath: m_Name
+      value: LoadingScreen
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 688b3aa390c2131408273a4bb804716b, type: 3}
