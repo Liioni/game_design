@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Tower : MonoBehaviour
 {
+    public AudioSource damageSound;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -13,6 +15,7 @@ public class Tower : MonoBehaviour
                 case HitResult.Invuln:
                     break;
                 case HitResult.Hit:
+                    damageSound.Play();
                     Destroy(collision.gameObject);
                     break;
                 case HitResult.Dead:
