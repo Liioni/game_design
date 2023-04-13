@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public void OnShoot(InputAction.CallbackContext context){
         if(currentPlaceableTurret) {
             if(context.phase == InputActionPhase.Performed) {
+                placingSound.Play();
                 currentPlaceableTurret = null;
                 towersPlaced++;
             }
@@ -163,7 +164,6 @@ public class PlayerController : MonoBehaviour
         if(Physics.Raycast(ray, out hitInfo)){
             currentPlaceableTurret.transform.position = hitInfo.point;
             currentPlaceableTurret.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
-            placingSound.Play();
         }
     }
 
