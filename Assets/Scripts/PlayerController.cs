@@ -39,11 +39,31 @@ public class PlayerController : MonoBehaviour
         if(currentPlaceableTurret) {
             if(context.phase == InputActionPhase.Performed) {
                 placingSound.Play();
+                // We have to en-/disable raycasting for turrets as otherwise
+                // it would mess with the placement of the turret
+                // (it is already shown on the scene so the ray will hit the turret even though it isn't placed)
+                currentPlaceableTurret.layer = LayerMask.NameToLayer("Default");
                 currentPlaceableTurret = null;
                 towersPlaced++;
             }
             return;
+        } else {
+            if(context.phase == InputActionPhase.Performed) {
+                // TOOD sound?
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hitInfo;
+                if(Physics.Raycast(ray, out hitInfo)){
+                    GameObject hit = hitInfo.transform.gameObject;
+                    Debug.Log(hit);
+                    if(hit.tag != "Turret")
+                        return;
+                    currentPlaceableTurret = hit;
+                    currentPlaceableTurret.layer = LayerMask.NameToLayer("Ignore Raycast");
+                    towersPlaced--;
+                }
+            }
         }
+
     }
 
     public void OnDash(InputAction.CallbackContext context){
@@ -154,7 +174,8 @@ public class PlayerController : MonoBehaviour
         RaycastHit hitInfo;
         if(Physics.Raycast(ray, out hitInfo)){
             currentPlaceableTurret.transform.position = hitInfo.point;
-            currentPlaceableTurret.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
+            // We want the turret to rotate freely (e.g. mousewheel)
+            // currentPlaceableTurret.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
         }
     }
 
@@ -165,11 +186,13 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnPicking(InputAction.CallbackContext context){
-        if(towersAvailable - towersPlaced > 0 && currentPlaceableTurret == null && context.phase == InputActionPhase.Performed){
+        if(context.phase != InputActionPhase.Performed)
+            return;
+        if(towersAvailable - towersPlaced > 0 && currentPlaceableTurret == null){
             currentPlaceableTurret = Instantiate(turretPrefab);
             currentPlaceableTurret.GetComponent<Turret>().burstSize = 2 + towersAvailable;
         }
-        else if(currentPlaceableTurret != null && context.phase == InputActionPhase.Performed){
+        else if(currentPlaceableTurret != null){
             Destroy(currentPlaceableTurret);
         }
     }
