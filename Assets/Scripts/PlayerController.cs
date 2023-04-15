@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 rotationTarget;
     
     public bool isPc;
-    public bool canShoot = false;
     public int towersAvailable = 1;
     private int towersPlaced = 0;
     [SerializeField]
@@ -27,7 +26,6 @@ public class PlayerController : MonoBehaviour
     private ObjectLifetime dashCooldownTimer;
     [SerializeField] private int dashCooldown;
 
-    public AudioSource shootingSound;
     public AudioSource dashSound;
     public AudioSource hurtSound;
     public AudioSource placingSound;
@@ -45,13 +43,6 @@ public class PlayerController : MonoBehaviour
                 towersPlaced++;
             }
             return;
-        }
-        if(!canShoot)
-            return;
-        // Started, Performed, Canceled <-- Which phase is the best to initialize the firing?
-        if(context.phase == InputActionPhase.Performed) {
-            GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-            shootingSound.Play();
         }
     }
 
