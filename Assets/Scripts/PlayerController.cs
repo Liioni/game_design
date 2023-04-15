@@ -69,7 +69,13 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context){
         if(context.phase == InputActionPhase.Started && dashCooldownTimer == null){
-            gameObject.GetComponent<CharacterController>().Move(movement * dashDistance);
+            CharacterController cct = gameObject.GetComponent<CharacterController>();
+            cct.enabled = false;
+            // This does not handle moving through an object
+            // e.g. a single enemy can block as from teleporting past him.
+            // cct.Move(movement * dashDistance);
+            transform.Translate(movement * dashDistance, Space.World);
+            cct.enabled = true;
             dashCooldownTimer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
             dashCooldownTimer.destroyGameObject = false;
             dashSound.Play();
