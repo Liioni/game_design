@@ -27,6 +27,12 @@ public class PlayerController : MonoBehaviour
     private ObjectLifetime dashCooldownTimer;
     [SerializeField] private int dashCooldown;
 
+    public AudioSource shootingSound;
+    public AudioSource dashSound;
+    public AudioSource hurtSound;
+    public AudioSource placingSound;
+    public AudioSource coinSound;
+
     public void OnMove(InputAction.CallbackContext context){
         move = context.ReadValue<Vector2>();
     }
@@ -34,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public void OnShoot(InputAction.CallbackContext context){
         if(currentPlaceableTurret) {
             if(context.phase == InputActionPhase.Performed) {
+                placingSound.Play();
                 currentPlaceableTurret = null;
                 towersPlaced++;
             }
@@ -44,16 +51,18 @@ public class PlayerController : MonoBehaviour
         // Started, Performed, Canceled <-- Which phase is the best to initialize the firing?
         if(context.phase == InputActionPhase.Performed) {
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+            shootingSound.Play();
         }
     }
 
     public void OnDash(InputAction.CallbackContext context){
         if(context.phase == InputActionPhase.Started && dashCooldownTimer == null){
             Vector3 movement = new Vector3(move.x, 0f, move.y);
-
+            
             transform.Translate(Vector3.Normalize(movement) * dashDistance, Space.World);
             dashCooldownTimer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
             dashCooldownTimer.destroyGameObject = false;
+            dashSound.Play();
         }
     }
     
@@ -133,6 +142,7 @@ public class PlayerController : MonoBehaviour
                 case HitResult.Invuln:
                     break;
                 case HitResult.Hit:
+                    hurtSound.Play();
                     break;
                 case HitResult.Dead:
                     GameObject.FindWithTag("Manager").GetComponent<GameMode>().Loose();
@@ -143,6 +153,7 @@ public class PlayerController : MonoBehaviour
         if(target.tag == "Coin") {
             Destroy(target);
             GameObject.FindWithTag("Manager").GetComponent<GameMode>().incrementScore();
+            coinSound.Play();
         }
     }
 

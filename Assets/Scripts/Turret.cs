@@ -20,6 +20,8 @@ public class Turret : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
 
+    public AudioSource shootingSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,6 +77,8 @@ public class Turret : MonoBehaviour
         if(fireCooldown > 0f || burstCount == 0 && angle > 3) {
             return;
         }
+
+        shootingSound.Play();
 
         GameObject instance = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         burstCount++;

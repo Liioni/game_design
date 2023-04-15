@@ -475,6 +475,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!82 &732579062 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3354047855800147602, guid: 3ee0371981289ca4a90398ef98479d2f, type: 3}
+  m_PrefabInstance: {fileID: 1919867175989613811}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &890946067
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,8 +943,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7528953035564229456, guid: 3ee0371981289ca4a90398ef98479d2f, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 732579062}
+    - target: {fileID: 7528953035564229456, guid: 3ee0371981289ca4a90398ef98479d2f, type: 3}
       propertyPath: towerHealth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528953035564229456, guid: 3ee0371981289ca4a90398ef98479d2f, type: 3}
+      propertyPath: destroySound
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ee0371981289ca4a90398ef98479d2f, type: 3}
