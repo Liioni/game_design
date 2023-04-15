@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2956193258846866484}
   - component: {fileID: 2956193258846866487}
   - component: {fileID: 2956193258846866486}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GunExit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 2956193259190696202}
   - component: {fileID: 2956193259190696213}
   - component: {fileID: 2956193259190696212}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 2956193259534498506}
   - component: {fileID: 2956193259534498517}
   - component: {fileID: 2956193259534498516}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 4947228484976152020}
   - component: {fileID: 5596314521411524464}
   - component: {fileID: -7967040496418661454}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
