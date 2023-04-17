@@ -7,16 +7,16 @@ public class Tower : MonoBehaviour
 {
     public AudioSource damageSound;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collider.gameObject.CompareTag("Enemy"))
         {
             switch (GetComponent<Health>().TakeDamage(1)) {
                 case HitResult.Invuln:
                     break;
                 case HitResult.Hit:
                     damageSound.Play();
-                    Destroy(collision.gameObject);
+                    Destroy(collider.gameObject);
                     break;
                 case HitResult.Dead:
                     GameObject.FindWithTag("Manager").GetComponent<GameMode>().Loose();

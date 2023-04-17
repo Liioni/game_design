@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float rotationSpeed;
     public float dashDistance;
-    private Vector2 move, mouseLook, joystickLook;
-    private Vector3 rotationTarget;
+    private Vector2 mouseLook, joystickLook;
+    private Vector3 movement, rotationTarget;
     
     public bool isPc;
     public int towersAvailable = 1;
@@ -32,7 +32,8 @@ public class PlayerController : MonoBehaviour
     public AudioSource coinSound;
 
     public void OnMove(InputAction.CallbackContext context){
-        move = context.ReadValue<Vector2>();
+        Vector2 input = context.ReadValue<Vector2>();
+        movement = Vector3.Normalize(new Vector3(input.x, 0f, input.y));
     }
 
     public void OnShoot(InputAction.CallbackContext context){
@@ -68,9 +69,13 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context){
         if(context.phase == InputActionPhase.Started && dashCooldownTimer == null){
-            Vector3 movement = new Vector3(move.x, 0f, move.y);
-            
-            transform.Translate(Vector3.Normalize(movement) * dashDistance, Space.World);
+            CharacterController cct = gameObject.GetComponent<CharacterController>();
+            cct.enabled = false;
+            // This does not handle moving through an object
+            // e.g. a single enemy can block as from teleporting past him.
+            // cct.Move(movement * dashDistance);
+            transform.Translate(movement * dashDistance, Space.World);
+            cct.enabled = true;
             dashCooldownTimer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
             dashCooldownTimer.destroyGameObject = false;
             dashSound.Play();
@@ -103,7 +108,7 @@ public class PlayerController : MonoBehaviour
             }
 
             movePlayerWithAim();
-        }else{
+        } else {
             if(joystickLook.x == 0 && joystickLook.y == 0) {
                 movePlayer();
             }else{
@@ -113,18 +118,15 @@ public class PlayerController : MonoBehaviour
     }
 
     private void movePlayer(){
-        Vector3 movement = new Vector3(move.x, 0f, move.y);
-
         if(movement != Vector3.zero){
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationSpeed);
         }
-
-        transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
+        gameObject.GetComponent<CharacterController>().Move(movement * moveSpeed * Time.deltaTime);
     }
 
     public void movePlayerWithAim(){
         if(isPc){
-            var lookPos= rotationTarget - transform.position;
+            var lookPos = rotationTarget - transform.position;
             lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
 
@@ -133,7 +135,7 @@ public class PlayerController : MonoBehaviour
             if(aimDirection != Vector3.zero){
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed);
             }
-        }else{
+        } else {
             Vector3 aimDirection = new Vector3(joystickLook.x, 0f, joystickLook.y);
 
             if(aimDirection != Vector3.zero){
@@ -141,9 +143,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        Vector3 movement = new Vector3(move.x, 0f, move.y);
-
-        transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
+        gameObject.GetComponent<CharacterController>().Move(movement * moveSpeed * Time.deltaTime);
     }
 
     void OnTriggerEnter(Collider other) {
