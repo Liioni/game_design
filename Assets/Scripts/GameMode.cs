@@ -11,6 +11,7 @@ public class GameMode : MonoBehaviour
     private bool _activeWave = false;
     public int waveNumber = 0;
     public int coinsCollected = 0;
+    public int coinsNeeded;
     public ObjectLifetime timer;
 
     public List<Spawner> waveSpawners;
@@ -55,9 +56,9 @@ public class GameMode : MonoBehaviour
 
     public void collectCoin() {
         coinsCollected++;
-        if(coinsCollected % 3 == 0) {
+        if(coinsCollected % coinsNeeded == 0) {
             setActiveWave(false);
-            GameObject.FindWithTag("Player").GetComponent<PlayerController>().towersAvailable = 1 + coinsCollected / 3;
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().towersAvailable = 1 + coinsCollected / coinsNeeded;
             foreach(var script in waveSpawners) {
                 script.difficulty++;
             }

@@ -7,16 +7,17 @@ using TMPro;
 public class UI : MonoBehaviour
 {
     [SerializeField]
-    GameMode gamemode; 
+    private GameMode gamemode; 
     [SerializeField]
-    Spawner spawner;
+    private Spawner spawner;
     [SerializeField]
-    PlayerController playerController; 
+    private PlayerController playerController; 
     [SerializeField]
-    RawImage image;
+    private RawImage image;
 
     public TextMeshProUGUI waveText;
     public TextMeshProUGUI turretsText;
+    public TextMeshProUGUI coinsText;
 
     // Update is called once per frame
     void Update(){
@@ -24,6 +25,9 @@ public class UI : MonoBehaviour
         waveText.text = "Wave " + gamemode.waveNumber.ToString() + "\n" + waveStatus;
 
         turretsText.text = playerController.towersPlaced.ToString() + "/" + playerController.towersAvailable.ToString();
+
+        int coins = gamemode.coinsCollected % gamemode.coinsNeeded;
+        coinsText.text = coins.ToString() + "/" + gamemode.coinsNeeded.ToString();
     }
 
     public void setButtonsActive(bool value){
