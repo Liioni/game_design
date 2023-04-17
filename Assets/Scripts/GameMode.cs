@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class GameMode : MonoBehaviour
 {
     [SerializeField]
+    UI ui;
     public bool towerMode;
     private bool _activeWave = false;
-    public int score = 0;
+    public int waveNumber = 0;
+    public int coinsCollected = 0;
     public ObjectLifetime timer;
 
     public List<Spawner> waveSpawners;
@@ -17,6 +19,9 @@ public class GameMode : MonoBehaviour
         _activeWave = newVal;
         foreach(var script in waveSpawners) {
             script.setActive(newVal);
+        }
+        if(newVal){
+            waveNumber++;
         }
         if(!newVal) {
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -27,7 +32,7 @@ public class GameMode : MonoBehaviour
             foreach(GameObject x in coins) {
                 Destroy(x);
             }
-
+            ui.setButtonsActive(true);
         }
         if(towerMode && newVal) {
             if(timer) Destroy(timer);
@@ -44,18 +49,20 @@ public class GameMode : MonoBehaviour
     void Start() {
         // To ensure each spawner is set correctly
         setActiveWave(_activeWave);
+        // To make sure the Buttons show before first wave
+        ui.setButtonsActive(true);
     }
 
-    public void incrementScore() {
-        score++;
-        if(score % 3 == 0) {
+    public void collectCoin() {
+        coinsCollected++;
+        if(coinsCollected % 3 == 0) {
             setActiveWave(false);
-            GameObject.FindWithTag("Player").GetComponent<PlayerController>().towersAvailable = 1 + score / 3;
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().towersAvailable = 1 + coinsCollected / 3;
             foreach(var script in waveSpawners) {
                 script.difficulty++;
             }
         }
-        Debug.Log(score);
+        Debug.Log(coinsCollected);
     }
 
     public void Loose() {
@@ -65,9 +72,9 @@ public class GameMode : MonoBehaviour
     void Update() {
         if(towerMode && !timer && _activeWave) {
             setActiveWave(false);
-            incrementScore();
-            incrementScore();
-            incrementScore();
+            collectCoin();
+            collectCoin();
+            collectCoin();
         }
     }
 }

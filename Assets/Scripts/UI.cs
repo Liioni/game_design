@@ -12,19 +12,21 @@ public class UI : MonoBehaviour
     Spawner spawner;
     [SerializeField]
     PlayerController playerController; 
-    
-    public TextMeshProUGUI scoreText;
+    [SerializeField]
+    RawImage image;
+
     public TextMeshProUGUI waveText;
     public TextMeshProUGUI turretsText;
 
     // Update is called once per frame
-    void Update()
-    {
-        scoreText.text ="Score: "+ gamemode.score.ToString();
+    void Update(){
+        string waveStatus = spawner.active ? "active"  : "inactive";
+        waveText.text = "Wave " + gamemode.waveNumber.ToString() + "\n" + waveStatus;
 
-        string? waveStatus = spawner.active ? "active"  : "inactive";
-        waveText.text = "Wave: " + waveStatus;
+        turretsText.text = playerController.towersPlaced.ToString() + "/" + playerController.towersAvailable.ToString();
+    }
 
-        turretsText.text = "Turrets: " + playerController.towersAvailable.ToString();
+    public void setButtonsActive(bool value){
+        image.gameObject.SetActive(value);
     }
 }
