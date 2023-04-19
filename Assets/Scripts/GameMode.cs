@@ -66,6 +66,12 @@ public class GameMode : MonoBehaviour
         Debug.Log(coinsCollected);
     }
 
+    public void increaseDifficulty(){
+        for (int i = 0; i < coinsNeeded; i++) {
+            collectCoin();
+        }
+    }
+
     public void Loose() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
