@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     
     public bool isPc;
     public int towersAvailable = 1;
-    private int towersPlaced = 0;
+    public int towersPlaced = 0;
     [SerializeField]
     private GameObject turretPrefab;
     private GameObject currentPlaceableTurret;
@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
         }
         if(target.tag == "Coin") {
             Destroy(target);
-            GameObject.FindWithTag("Manager").GetComponent<GameMode>().incrementScore();
+            GameObject.FindWithTag("Manager").GetComponent<GameMode>().collectCoin();
             coinSound.Play();
         }
     }
