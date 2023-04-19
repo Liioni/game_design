@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
         }
         if(target.tag == "Coin") {
             Destroy(target);
-            GameObject.FindWithTag("Manager").GetComponent<GameMode>().incrementScore();
+            GameObject.FindWithTag("Manager").GetComponent<GameMode>().collectCoin();
             coinSound.Play();
         }
     }
