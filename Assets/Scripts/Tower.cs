@@ -5,15 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class Tower : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    public AudioSource damageSound;
+
+    private void OnTriggerEnter(Collider collider)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collider.gameObject.CompareTag("Enemy"))
         {
             switch (GetComponent<Health>().TakeDamage(1)) {
                 case HitResult.Invuln:
                     break;
                 case HitResult.Hit:
-                    Destroy(collision.gameObject);
+                    damageSound.Play();
+                    Destroy(collider.gameObject);
                     break;
                 case HitResult.Dead:
                     GameObject.FindWithTag("Manager").GetComponent<GameMode>().Loose();

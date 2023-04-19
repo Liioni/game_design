@@ -27,6 +27,6 @@ public class Enemy : MonoBehaviour
         if (target == null) { return; }
         Vector3 direction = (target.transform.position - transform.position).normalized;
         direction.y = 0f;
-        transform.position += movementSpeed * Time.deltaTime * direction;
+        gameObject.GetComponent<CharacterController>().Move(direction * movementSpeed * Time.deltaTime);
     }
 }

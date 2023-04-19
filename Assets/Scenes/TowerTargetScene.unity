@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571328, b: 0.3069218, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -285,6 +285,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!82 &732579062 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3354047855800147602, guid: 3ee0371981289ca4a90398ef98479d2f, type: 3}
+  m_PrefabInstance: {fileID: 1919867175989613811}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &890946067
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,10 +565,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2956193259979519493, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
-      propertyPath: canShoot
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2956193259979519546, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
       propertyPath: m_DefaultActionMap
       value: Player
@@ -747,8 +748,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7528953035564229456, guid: 3ee0371981289ca4a90398ef98479d2f, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 732579062}
+    - target: {fileID: 7528953035564229456, guid: 3ee0371981289ca4a90398ef98479d2f, type: 3}
       propertyPath: towerHealth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528953035564229456, guid: 3ee0371981289ca4a90398ef98479d2f, type: 3}
+      propertyPath: destroySound
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ee0371981289ca4a90398ef98479d2f, type: 3}
