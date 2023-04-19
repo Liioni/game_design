@@ -99,6 +99,7 @@ MonoBehaviour:
   turnSpeed: 10
   bulletPrefab: {fileID: 1850503077362125822, guid: 37aaca4b8fc47fb4d8e794134602bcb8, type: 3}
   firePoint: {fileID: 911619440018560609}
+  partToRotate: {fileID: 6412449095299377988}
   shootingSound: {fileID: 547757909840779659}
 --- !u!82 &547757909840779659
 AudioSource:
