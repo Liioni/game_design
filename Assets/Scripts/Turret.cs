@@ -20,6 +20,8 @@ public class Turret : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
 
+    public Transform partToRotate;
+
     public AudioSource shootingSound;
 
     // Start is called before the first frame update
@@ -59,16 +61,16 @@ public class Turret : MonoBehaviour
     // Returns relative angle remaining between target and self
     float Rotate(GameObject target) {
         //direction is vector that goes from us to target
-        Vector3 direction = target.transform.position - transform.position;
+        Vector3 direction = target.transform.position - partToRotate.position;
 
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         //only rotate around y axis
-        float angle_abs = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime*turnSpeed).eulerAngles.y;
+        float angle_abs = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime*turnSpeed).eulerAngles.y;
         Quaternion rotation = Quaternion.Euler(0f, angle_abs, 0f);
-        float angle_rel = lookRotation.eulerAngles.y - transform.rotation.eulerAngles.y;
+        float angle_rel = lookRotation.eulerAngles.y - partToRotate.rotation.eulerAngles.y;
         // Don't turn unless the burst is over. Return angle anyway
         if(burstCount == 0) {
-            transform.rotation = rotation;
+            partToRotate.rotation = rotation;
         }
         return Mathf.Abs(angle_rel);
     }
