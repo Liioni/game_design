@@ -23,6 +23,7 @@ public class Turret : MonoBehaviour
     public Transform partToRotate;
 
     public AudioSource shootingSound;
+    public ParticleSystem shootingParticles;
 
     public bool chaseEnemy;
     // Start is called before the first frame update
@@ -80,7 +81,7 @@ public class Turret : MonoBehaviour
         if(fireCooldown > 0f || burstCount == 0 && angle > 3) {
             return;
         }
-
+        shootingParticles.Play();
         shootingSound.Play();
         GameObject instance = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         if(chaseEnemy){

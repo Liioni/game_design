@@ -548,7 +548,8 @@ MonoBehaviour:
   dashDistance: 6
   isPc: 1
   towersAvailable: 1
-  turretPrefab: {fileID: 8312698534413942944, guid: f68a20899d2259342ae6800f02bbfb0e, type: 3}
+  towersPlaced: 0
+  turretPrefab: {fileID: 8352704568136261773, guid: f47f0c5460aae314c8e6fb73ecaea8ae, type: 3}
   bulletPrefab: {fileID: 1850503077362125822, guid: 37aaca4b8fc47fb4d8e794134602bcb8, type: 3}
   bulletSpawn: {fileID: 2956193258846866481}
   dashCooldown: 2
