@@ -16,15 +16,19 @@ public class GameMode : MonoBehaviour
 
     public List<Spawner> waveSpawners;
 
-    void setActiveWave(bool newVal) {
+    public AudioSource waveSoundtrack;
+
+    void setActiveWave(bool newVal) { 
         _activeWave = newVal;
         foreach(var script in waveSpawners) {
             script.setActive(newVal);
         }
         if(newVal){
+            waveSoundtrack.Play();
             waveNumber++;
         }
         if(!newVal) {
+            waveSoundtrack.Stop();
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin");
             foreach(GameObject x in enemies) {
