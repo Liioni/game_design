@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float rotationSpeed;
     public float dashDistance;
+    private bool moveable = false;
     private Vector2 mouseLook, joystickLook;
     private Vector3 movement, rotationTarget;
     
@@ -106,20 +107,22 @@ public class PlayerController : MonoBehaviour
             MoveCurrentPlaceableTurretToMouse();
             RotateFromMouseWheel();
         }
-        if(isPc){
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(mouseLook);
+        if(moveable){
+            if(isPc){
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(mouseLook);
 
-            if(Physics.Raycast(ray, out hit)){
-                rotationTarget = hit.point;
-            }
+                if(Physics.Raycast(ray, out hit)){
+                    rotationTarget = hit.point;
+                }
 
-            movePlayerWithAim();
-        } else {
-            if(joystickLook.x == 0 && joystickLook.y == 0) {
-                movePlayer();
-            }else{
                 movePlayerWithAim();
+            } else {
+                if(joystickLook.x == 0 && joystickLook.y == 0) {
+                    movePlayer();
+                }else{
+                    movePlayerWithAim();
+                }
             }
         }
     }
@@ -215,5 +218,13 @@ public class PlayerController : MonoBehaviour
             currentPlaceableTurret = Instantiate(selectedTurretPrefab);
         }
 
+    }
+
+    public void addAvailableTowers(int value){
+        towersAvailable += value;
+    }
+
+    public void flipMovable(bool value){
+        moveable = value;
     }
 }
