@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float rotationSpeed;
     public float dashDistance;
+    private bool moveable = false;
     private Vector2 mouseLook, joystickLook;
     private Vector3 movement, rotationTarget;
     
@@ -195,5 +196,13 @@ public class PlayerController : MonoBehaviour
         else if(currentPlaceableTurret != null){
             Destroy(currentPlaceableTurret);
         }
+    }
+
+    public void addAvailableTowers(int value){
+        towersAvailable += value;
+    }
+
+    public void flipMovable(){
+        moveable = !moveable;
     }
 }

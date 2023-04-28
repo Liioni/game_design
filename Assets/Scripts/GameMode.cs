@@ -20,18 +20,19 @@ public class GameMode : MonoBehaviour
 
     public AudioSource waveSoundtrack;
 
+    private GameObject[] enemies;
+    private GameObject[] turrets;
+
     void setActiveWave(bool newVal) { 
         _activeWave = newVal;
-        foreach(var script in waveSpawners) {
-            script.setActive(newVal);
-        }
+        activateScripts(newVal);
         if(newVal){
             waveSoundtrack.Play();
             waveNumber++;
         }
         if(!newVal) {
             waveSoundtrack.Stop();
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            enemies = GameObject.FindGameObjectsWithTag("Enemy");
             GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin");
             foreach(GameObject x in enemies) {
                 Destroy(x);
@@ -39,13 +40,20 @@ public class GameMode : MonoBehaviour
             foreach(GameObject x in coins) {
                 Destroy(x);
             }
+            enemies = null;
             ui.setButtonsActive(true);
         }
-        if(towerMode && newVal) {
+        if(newVal) {
             if(timer) Destroy(timer);
             timer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
             timer.destroyGameObject = false;
             timer.life_span = 30;
+        }
+    }
+
+    private void activateScripts(bool value){
+        foreach(var script in waveSpawners) {
+            script.setActive(value);
         }
     }
 
@@ -54,8 +62,29 @@ public class GameMode : MonoBehaviour
     }
 
     public void flipPaused(){
-        Debug.Log(_paused);
         _paused = !_paused;
+        ui.setPauseActive(_paused);
+        activateScripts(!_paused);
+        if(_paused){
+            enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            turrets = GameObject.FindGameObjectsWithTag("Turret");
+            pauseGame();
+        }else{
+            pauseGame();
+            enemies = null;
+            turrets = null;
+        }
+    }
+
+    private void pauseGame(){
+        Debug.Log("Game Paused");
+        activateScripts(!_paused);
+        foreach (var enemy in enemies){
+            enemy.gameObject.SetActive(!_paused);
+        }
+        foreach (var turret in turrets){
+            turret.gameObject.SetActive(!_paused);
+        }
     }
 
     void Start() {
@@ -67,19 +96,12 @@ public class GameMode : MonoBehaviour
 
     public void collectCoin() {
         coinsCollected++;
-        if(coinsCollected % coinsNeeded == 0) {
-            setActiveWave(false);
-            GameObject.FindWithTag("Player").GetComponent<PlayerController>().towersAvailable = 1 + coinsCollected / coinsNeeded;
-            foreach(var script in waveSpawners) {
-                script.difficulty++;
-            }
-        }
-        Debug.Log(coinsCollected);
     }
 
     public void increaseDifficulty(){
-        for (int i = 0; i < coinsNeeded; i++) {
-            collectCoin();
+        GameObject.FindWithTag("Player").GetComponent<PlayerController>().addAvailableTowers(1);
+        foreach(var script in waveSpawners) {
+            script.difficulty++;
         }
     }
 
@@ -88,11 +110,9 @@ public class GameMode : MonoBehaviour
     }
 
     void Update() {
-        if(towerMode && !timer && _activeWave) {
+        if(!timer && _activeWave) {
             setActiveWave(false);
-            collectCoin();
-            collectCoin();
-            collectCoin();
+            increaseDifficulty();
         }
     }
 }
