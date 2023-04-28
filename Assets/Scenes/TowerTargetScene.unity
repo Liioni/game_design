@@ -516,6 +516,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3396104884447338362, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
+      propertyPath: waveSoundtrack
+      value: 
+      objectReference: {fileID: 1931135245}
+    - target: {fileID: 3396104884447338362, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
       propertyPath: waveSpawners.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -686,6 +690,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2956193259979519550, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
   m_PrefabInstance: {fileID: 1808597856}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1931135245 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7664412013155291232, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
+  m_PrefabInstance: {fileID: 1688136204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1919867175989613811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -770,6 +779,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 407213532, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1688136206}
+    - target: {fileID: 407213532, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: flipPaused
+      objectReference: {fileID: 0}
+    - target: {fileID: 511652840, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1688136206}
+    - target: {fileID: 511652840, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: flipPaused
+      objectReference: {fileID: 0}
     - target: {fileID: 931597454, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
