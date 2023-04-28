@@ -7,8 +7,10 @@ public class GameMode : MonoBehaviour
 {
     [SerializeField]
     UI ui;
+    private int startMenuScene = 0;
     public bool towerMode;
     private bool _activeWave = false;
+    private bool _paused = false;
     public int waveNumber = 0;
     public int coinsCollected = 0;
     public int coinsNeeded;
@@ -51,6 +53,11 @@ public class GameMode : MonoBehaviour
         setActiveWave(!_activeWave);
     }
 
+    public void flipPaused(){
+        Debug.Log(_paused);
+        _paused = !_paused;
+    }
+
     void Start() {
         // To ensure each spawner is set correctly
         setActiveWave(_activeWave);
@@ -77,7 +84,7 @@ public class GameMode : MonoBehaviour
     }
 
     public void Loose() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(startMenuScene);
     }
 
     void Update() {
