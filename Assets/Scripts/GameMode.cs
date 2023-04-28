@@ -7,8 +7,10 @@ public class GameMode : MonoBehaviour
 {
     [SerializeField]
     UI ui;
+    private int startMenuScene = 0;
     public bool towerMode;
     private bool _activeWave = false;
+    private bool _paused = false;
     public int waveNumber = 0;
     public int coinsCollected = 0;
     public int coinsNeeded;
@@ -18,18 +20,21 @@ public class GameMode : MonoBehaviour
 
     public AudioSource waveSoundtrack;
 
+    private GameObject[] enemies;
+    private GameObject[] turrets;
+
     void setActiveWave(bool newVal) { 
         _activeWave = newVal;
-        foreach(var script in waveSpawners) {
-            script.setActive(newVal);
-        }
+        activateScripts(newVal);
         if(newVal){
             waveSoundtrack.Play();
             waveNumber++;
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().flipMovable(newVal);
         }
         if(!newVal) {
             waveSoundtrack.Stop();
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().flipMovable(!newVal);
+            enemies = GameObject.FindGameObjectsWithTag("Enemy");
             GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin");
             foreach(GameObject x in enemies) {
                 Destroy(x);
@@ -37,9 +42,10 @@ public class GameMode : MonoBehaviour
             foreach(GameObject x in coins) {
                 Destroy(x);
             }
+            enemies = null;
             ui.setButtonsActive(true);
         }
-        if(towerMode && newVal) {
+        if(newVal) {
             if(timer) Destroy(timer);
             timer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
             timer.destroyGameObject = false;
@@ -47,8 +53,45 @@ public class GameMode : MonoBehaviour
         }
     }
 
+    private void activateScripts(bool value){
+        foreach(var script in waveSpawners) {
+            script.setActive(value);
+        }
+    }
+
     public void flipActiveWave() {
         setActiveWave(!_activeWave);
+    }
+
+    public void flipPaused(){
+        _paused = !_paused;
+        ui.setPauseActive(_paused);
+        activateScripts(!_paused);
+        if(GameObject.FindWithTag("Player")) GameObject.FindWithTag("Player").GetComponent<PlayerController>().flipMovable(!_paused);
+        if(_paused){
+            enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            turrets = GameObject.FindGameObjectsWithTag("Turret");
+            pauseGame();
+        }else{
+            pauseGame();
+            enemies = null;
+            turrets = null;
+        }
+    }
+
+    private void pauseGame(){
+        Debug.Log("Game Paused");
+        activateScripts(!_paused);
+        if(enemies != null){
+            foreach (var enemy in enemies){
+                enemy.gameObject.SetActive(!_paused);
+            }
+        }
+        if(turrets != null){
+            foreach (var turret in turrets){
+                turret.gameObject.SetActive(!_paused);
+            }
+        }
     }
 
     void Start() {
@@ -60,32 +103,23 @@ public class GameMode : MonoBehaviour
 
     public void collectCoin() {
         coinsCollected++;
-        if(coinsCollected % coinsNeeded == 0) {
-            setActiveWave(false);
-            GameObject.FindWithTag("Player").GetComponent<PlayerController>().towersAvailable = 1 + coinsCollected / coinsNeeded;
-            foreach(var script in waveSpawners) {
-                script.difficulty++;
-            }
-        }
-        Debug.Log(coinsCollected);
     }
 
     public void increaseDifficulty(){
-        for (int i = 0; i < coinsNeeded; i++) {
-            collectCoin();
+        GameObject.FindWithTag("Player").GetComponent<PlayerController>().addAvailableTowers(1);
+        foreach(var script in waveSpawners) {
+            script.difficulty++;
         }
     }
 
     public void Loose() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(startMenuScene);
     }
 
     void Update() {
-        if(towerMode && !timer && _activeWave) {
+        if(!timer && _activeWave) {
             setActiveWave(false);
-            collectCoin();
-            collectCoin();
-            collectCoin();
+            increaseDifficulty();
         }
     }
 }
