@@ -20,6 +20,7 @@ public class UI : MonoBehaviour
     public TextMeshProUGUI waveText;
     public TextMeshProUGUI turretsText;
     public TextMeshProUGUI coinsText;
+    public TextMeshProUGUI timerText;
 
     // Update is called once per frame
     void Update(){
@@ -29,6 +30,9 @@ public class UI : MonoBehaviour
         turretsText.text = playerController.towersPlaced.ToString() + "/" + playerController.towersAvailable.ToString();
 
         coinsText.text = gamemode.coinsCollected.ToString();
+
+        if(gamemode.timer) timerText.text = gamemode.timer.timeLeft().ToString("0.0");
+        else timerText.text = "0";
     }
 
     public void setButtonsActive(bool value){

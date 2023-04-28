@@ -22,4 +22,8 @@ public class ObjectLifetime : MonoBehaviour
             }
         }
     }
+
+    public float timeLeft(){
+        return life_span - elapsedTime;
+    }
 }

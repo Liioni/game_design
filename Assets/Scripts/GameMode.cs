@@ -29,9 +29,11 @@ public class GameMode : MonoBehaviour
         if(newVal){
             waveSoundtrack.Play();
             waveNumber++;
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().flipMovable(newVal);
         }
         if(!newVal) {
             waveSoundtrack.Stop();
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().flipMovable(!newVal);
             enemies = GameObject.FindGameObjectsWithTag("Enemy");
             GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin");
             foreach(GameObject x in enemies) {
@@ -65,6 +67,7 @@ public class GameMode : MonoBehaviour
         _paused = !_paused;
         ui.setPauseActive(_paused);
         activateScripts(!_paused);
+        if(GameObject.FindWithTag("Player")) GameObject.FindWithTag("Player").GetComponent<PlayerController>().flipMovable(!_paused);
         if(_paused){
             enemies = GameObject.FindGameObjectsWithTag("Enemy");
             turrets = GameObject.FindGameObjectsWithTag("Turret");
@@ -79,11 +82,15 @@ public class GameMode : MonoBehaviour
     private void pauseGame(){
         Debug.Log("Game Paused");
         activateScripts(!_paused);
-        foreach (var enemy in enemies){
-            enemy.gameObject.SetActive(!_paused);
+        if(enemies != null){
+            foreach (var enemy in enemies){
+                enemy.gameObject.SetActive(!_paused);
+            }
         }
-        foreach (var turret in turrets){
-            turret.gameObject.SetActive(!_paused);
+        if(turrets != null){
+            foreach (var turret in turrets){
+                turret.gameObject.SetActive(!_paused);
+            }
         }
     }
 
