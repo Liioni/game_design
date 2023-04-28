@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     
 
     private void Start(){
+        moveable = false;
         selectedTurretPrefab  = turretPrefabs[0];
     }
 
