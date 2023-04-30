@@ -9,14 +9,18 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float rotationSpeed;
     public float dashDistance;
+    private bool moveable = false;
     private Vector2 mouseLook, joystickLook;
     private Vector3 movement, rotationTarget;
     
     public bool isPc;
     public int towersAvailable = 1;
     public int towersPlaced = 0;
+   
+    private int numTurrets = 2;
     [SerializeField]
-    private GameObject turretPrefab;
+    private GameObject[] turretPrefabs;
+    private GameObject selectedTurretPrefab;
     private GameObject currentPlaceableTurret;
     private float mouseWheelRotation;
 
@@ -30,6 +34,12 @@ public class PlayerController : MonoBehaviour
     public AudioSource hurtSound;
     public AudioSource placingSound;
     public AudioSource coinSound;
+    
+
+    private void Start(){
+        moveable = false;
+        selectedTurretPrefab  = turretPrefabs[0];
+    }
 
     public void OnMove(InputAction.CallbackContext context){
         Vector2 input = context.ReadValue<Vector2>();
@@ -91,28 +101,29 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void Start(){
-    }
+
     
     private void Update(){
         if(currentPlaceableTurret != null){
             MoveCurrentPlaceableTurretToMouse();
             RotateFromMouseWheel();
         }
-        if(isPc){
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(mouseLook);
+        if(moveable){
+            if(isPc){
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(mouseLook);
 
-            if(Physics.Raycast(ray, out hit)){
-                rotationTarget = hit.point;
-            }
+                if(Physics.Raycast(ray, out hit)){
+                    rotationTarget = hit.point;
+                }
 
-            movePlayerWithAim();
-        } else {
-            if(joystickLook.x == 0 && joystickLook.y == 0) {
-                movePlayer();
-            }else{
                 movePlayerWithAim();
+            } else {
+                if(joystickLook.x == 0 && joystickLook.y == 0) {
+                    movePlayer();
+                }else{
+                    movePlayerWithAim();
+                }
             }
         }
     }
@@ -189,11 +200,32 @@ public class PlayerController : MonoBehaviour
         if(context.phase != InputActionPhase.Performed)
             return;
         if(towersAvailable - towersPlaced > 0 && currentPlaceableTurret == null){
-            currentPlaceableTurret = Instantiate(turretPrefab);
+            currentPlaceableTurret = Instantiate(selectedTurretPrefab);
             currentPlaceableTurret.GetComponent<Turret>().burstSize = 2 + towersAvailable;
         }
         else if(currentPlaceableTurret != null){
             Destroy(currentPlaceableTurret);
         }
+    }
+
+    public void OnSelectTurret(InputAction.CallbackContext context){
+        string pressedKey = context.control.ToString();
+        char pressedKey_char = pressedKey[pressedKey.Length - 1];
+        int turretIndex = pressedKey_char - '0';
+        selectedTurretPrefab = turretPrefabs[turretIndex-1];
+
+        if(currentPlaceableTurret!=null){
+            Destroy(currentPlaceableTurret);
+            currentPlaceableTurret = Instantiate(selectedTurretPrefab);
+        }
+
+    }
+
+    public void addAvailableTowers(int value){
+        towersAvailable += value;
+    }
+
+    public void flipMovable(bool value){
+        moveable = value;
     }
 }

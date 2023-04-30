@@ -16,5 +16,8 @@ EditorBuildSettings:
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/TowerTargetScene.unity
-    guid: d20cac759de3a2f4a90fb4081d6f5d40
+    guid: 200f50ff71459ad4c95c6f01a1e3a548
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
