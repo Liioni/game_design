@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SelectTurret",
+                    "type": "Button",
+                    "id": "cde5c83d-6a38-4947-a818-71285b60b94c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -221,6 +230,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Placing",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ccccaca-3fe3-4a99-9a0c-e39e06e813a2",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectTurret",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8490b810-a8ff-46ad-983f-850e1ccff014",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectTurret",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
