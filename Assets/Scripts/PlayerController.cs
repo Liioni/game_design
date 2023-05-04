@@ -17,12 +17,10 @@ public class PlayerController : MonoBehaviour
     public int towersAvailable = 1;
     public int towersPlaced = 0;
    
-    private int numTurrets = 2;
     [SerializeField]
     private GameObject[] turretPrefabs;
-    private GameObject selectedTurretPrefab;
+    private int turretIndex = 0;
     private GameObject currentPlaceableTurret;
-    private float mouseWheelRotation;
 
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
@@ -38,7 +36,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start(){
         moveable = false;
-        selectedTurretPrefab  = turretPrefabs[0];
     }
 
     public void OnMove(InputAction.CallbackContext context){
@@ -53,7 +50,6 @@ public class PlayerController : MonoBehaviour
                 // We have to en-/disable raycasting for turrets as otherwise
                 // it would mess with the placement of the turret
                 // (it is already shown on the scene so the ray will hit the turret even though it isn't placed)
-                currentPlaceableTurret.layer = LayerMask.NameToLayer("Default");
                 currentPlaceableTurret = null;
                 towersPlaced++;
             }
@@ -63,13 +59,12 @@ public class PlayerController : MonoBehaviour
                 // TOOD sound?
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hitInfo;
-                if(Physics.Raycast(ray, out hitInfo)){
+                var layerMask = 1 << LayerMask.NameToLayer("Turret");
+                if(Physics.Raycast(ray, out hitInfo, Mathf.Infinity, layerMask)){
                     GameObject hit = hitInfo.transform.gameObject;
-                    Debug.Log(hit);
                     if(hit.tag != "Turret")
                         return;
                     currentPlaceableTurret = hit;
-                    currentPlaceableTurret.layer = LayerMask.NameToLayer("Ignore Raycast");
                     towersPlaced--;
                 }
             }
@@ -106,14 +101,14 @@ public class PlayerController : MonoBehaviour
     private void Update(){
         if(currentPlaceableTurret != null){
             MoveCurrentPlaceableTurretToMouse();
-            RotateFromMouseWheel();
         }
         if(moveable){
             if(isPc){
                 RaycastHit hit;
+                var layerMask = 1 << LayerMask.NameToLayer("Default");
                 Ray ray = Camera.main.ScreenPointToRay(mouseLook);
 
-                if(Physics.Raycast(ray, out hit)){
+                if(Physics.Raycast(ray, out hit, Mathf.Infinity)){
                     rotationTarget = hit.point;
                 }
 
@@ -183,27 +178,53 @@ public class PlayerController : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
-        if(Physics.Raycast(ray, out hitInfo)){
+        var layerMask = 1 << LayerMask.NameToLayer("Default");
+        if(Physics.Raycast(ray, out hitInfo, Mathf.Infinity, layerMask)){
             currentPlaceableTurret.transform.position = hitInfo.point;
             // We want the turret to rotate freely (e.g. mousewheel)
             // currentPlaceableTurret.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
         }
     }
 
-    private void RotateFromMouseWheel()
+    private void UpdateSelected() {
+        if(currentPlaceableTurret == null) {
+            if(towersAvailable <= towersPlaced) {
+                return;
+            }
+        } else {
+            Destroy(currentPlaceableTurret);
+        }
+
+        currentPlaceableTurret = Instantiate(turretPrefabs[turretIndex]);
+    }
+
+    public void OnScroll(InputAction.CallbackContext context)
     {
-        mouseWheelRotation = Input.mouseScrollDelta.y;
-        currentPlaceableTurret.transform.Rotate(Vector3.up, mouseWheelRotation * 10f);
+        if(context.phase != InputActionPhase.Performed) {
+            return;
+        }
+        if(currentPlaceableTurret == null) {
+            return;
+        }
+        float scroll = context.ReadValue<float>();
+        if(scroll > 0) {
+            turretIndex += 1;
+        } else if(scroll < 0) {
+            turretIndex -= 1;
+        }
+        // C# modulo does not handle negative numbers correctly.
+        // Adding length first, then modulo, ensures that only positive numbers are returned
+        turretIndex = (turretIndex + turretPrefabs.Length) % turretPrefabs.Length;
+
+        UpdateSelected();
     }
 
     public void OnPicking(InputAction.CallbackContext context){
         if(context.phase != InputActionPhase.Performed)
             return;
-        if(towersAvailable - towersPlaced > 0 && currentPlaceableTurret == null){
-            currentPlaceableTurret = Instantiate(selectedTurretPrefab);
-            currentPlaceableTurret.GetComponent<Turret>().burstSize = 2 + towersAvailable;
-        }
-        else if(currentPlaceableTurret != null){
+        if(currentPlaceableTurret == null) {
+            UpdateSelected();
+        } else {
             Destroy(currentPlaceableTurret);
         }
     }
@@ -211,21 +232,16 @@ public class PlayerController : MonoBehaviour
     public void OnSelectTurret(InputAction.CallbackContext context){
         string pressedKey = context.control.ToString();
         char pressedKey_char = pressedKey[pressedKey.Length - 1];
-        int turretIndex = pressedKey_char - '0';
-        selectedTurretPrefab = turretPrefabs[turretIndex-1];
+        turretIndex = pressedKey_char - '0' - 1;
 
-        if(currentPlaceableTurret!=null){
-            Destroy(currentPlaceableTurret);
-            currentPlaceableTurret = Instantiate(selectedTurretPrefab);
-        }
-
+        UpdateSelected();
     }
 
     public void addAvailableTowers(int value){
         towersAvailable += value;
     }
 
-    public void flipMovable(bool value){
+    public void setMovable(bool value){
         moveable = value;
     }
 }

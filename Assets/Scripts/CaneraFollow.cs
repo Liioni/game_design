@@ -23,7 +23,7 @@ public class CaneraFollow : MonoBehaviour
     [Range(0f, 90f)]
     public float xAngle = 90f;
 
-    private float sensitivity = 10f;
+    // private float sensitivity = 10f;
 
     // Start is called before the first frame update
     void Start(){
@@ -38,12 +38,15 @@ public class CaneraFollow : MonoBehaviour
     void LateUpdate(){
         if(target != null){
 
+            // We use the scroll wheel for selecting buildings instead
+            /*
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             if (Input.GetKey(KeyCode.LeftControl)) {
                 xAngle -= scroll * sensitivity;
             } else {
                 d -= scroll * sensitivity;
             }
+            */
 
             d = Mathf.Clamp(d, dMin, dMax);
             xAngle = Mathf.Clamp(xAngle, xAngleMin, xAngleMax);

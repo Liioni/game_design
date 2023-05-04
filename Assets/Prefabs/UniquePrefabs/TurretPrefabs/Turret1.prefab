@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3687350091338975442}
   - component: {fileID: 3234906509450518232}
   - component: {fileID: 547757909840779659}
-  m_Layer: 0
+  - component: {fileID: 3846972505633190409}
+  m_Layer: 3
   m_Name: Turret1
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,6 +155,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &3846972505633190409
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3234906509450518239}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.47
+  m_Height: 10.55
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4565101950392883026
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,9 +180,9 @@ GameObject:
   - component: {fileID: 855416234503441114}
   - component: {fileID: 4015062691385461126}
   - component: {fileID: 2088856563329815963}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TowerTip
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -246,9 +261,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1780396490427551433}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -282,9 +297,9 @@ GameObject:
   - component: {fileID: 7793428392810581725}
   - component: {fileID: 1860448464445146135}
   - component: {fileID: 5974362287339580449}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TowerCylinder
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -365,9 +380,9 @@ GameObject:
   - component: {fileID: 7069725949953806991}
   - component: {fileID: 4904292052838401964}
   - component: {fileID: 6063862726305844877}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cannon
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -446,9 +461,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 911619440018560609}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FirePoint
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -479,9 +494,9 @@ GameObject:
   - component: {fileID: 3885620983188053882}
   - component: {fileID: 8598029594693295930}
   - component: {fileID: 7698992427289499638}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Base
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -560,9 +575,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6412449095299377988}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PartToRotate
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

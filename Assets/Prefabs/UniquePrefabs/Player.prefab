@@ -542,6 +542,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: cde5c83d-6a38-4947-a818-71285b60b94c
     m_ActionName: Player/SelectTurret[/Keyboard/1,/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2956193259979519493}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnScroll
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f78378a2-c8f0-44d5-a0d5-4f8648f676bc
+    m_ActionName: Player/RotateMouseWheel[/Mouse/scroll/up,/Mouse/scroll/down]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -568,6 +584,7 @@ MonoBehaviour:
   turretPrefabs:
   - {fileID: 3234906509450518239, guid: 761e26497dd62df4b8c80e25bbac2926, type: 3}
   - {fileID: 8352704568136261773, guid: f47f0c5460aae314c8e6fb73ecaea8ae, type: 3}
+  - {fileID: 745834580211298809, guid: 3ee0371981289ca4a90398ef98479d2f, type: 3}
   bulletPrefab: {fileID: 5638477700184001759, guid: 09c23df2a77740844b62e9298fbf5c93, type: 3}
   bulletSpawn: {fileID: 2956193258846866481}
   dashCooldown: 2
