@@ -29,11 +29,14 @@ public class GameMode : MonoBehaviour
         if(newVal){
             waveSoundtrack.Play();
             waveNumber++;
-            GameObject.FindWithTag("Player").GetComponent<PlayerController>().flipMovable(newVal);
-        }
-        if(!newVal) {
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().setMovable(newVal);
+            if(timer) Destroy(timer);
+            timer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
+            timer.destroyGameObject = false;
+            timer.life_span = 30;
+        } else {
             waveSoundtrack.Stop();
-            GameObject.FindWithTag("Player").GetComponent<PlayerController>().flipMovable(!newVal);
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().setMovable(!newVal);
             enemies = GameObject.FindGameObjectsWithTag("Enemy");
             GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin");
             foreach(GameObject x in enemies) {
@@ -44,12 +47,6 @@ public class GameMode : MonoBehaviour
             }
             enemies = null;
             ui.setButtonsActive(true);
-        }
-        if(newVal) {
-            if(timer) Destroy(timer);
-            timer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
-            timer.destroyGameObject = false;
-            timer.life_span = 30;
         }
     }
 
@@ -67,7 +64,7 @@ public class GameMode : MonoBehaviour
         _paused = !_paused;
         ui.setPauseActive(_paused);
         activateScripts(!_paused);
-        if(GameObject.FindWithTag("Player")) GameObject.FindWithTag("Player").GetComponent<PlayerController>().flipMovable(!_paused);
+        if(GameObject.FindWithTag("Player")) GameObject.FindWithTag("Player").GetComponent<PlayerController>().setMovable(!_paused);
         if(_paused){
             enemies = GameObject.FindGameObjectsWithTag("Enemy");
             turrets = GameObject.FindGameObjectsWithTag("Turret");

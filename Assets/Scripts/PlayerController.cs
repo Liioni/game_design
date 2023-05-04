@@ -225,7 +225,7 @@ public class PlayerController : MonoBehaviour
         towersAvailable += value;
     }
 
-    public void flipMovable(bool value){
+    public void setMovable(bool value){
         moveable = value;
     }
 }
