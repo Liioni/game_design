@@ -15,15 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Placing",
-                    "type": "Button",
-                    "id": "c914b4db-413a-4bd7-b3ea-496fb482d5af",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Picking",
                     "type": "Button",
                     "id": "90b9756b-da7a-4c9e-b085-c38d991d9edf",
@@ -51,7 +42,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Shoot",
+                    "name": "Place",
                     "type": "Button",
                     "id": "62e32d7c-667b-457c-a529-d17ac3833aa1",
                     "expectedControlType": "Button",
@@ -73,6 +64,15 @@
                     "type": "Button",
                     "id": "cde5c83d-6a38-4947-a818-71285b60b94c",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RotateMouseWheel",
+                    "type": "Value",
+                    "id": "f78378a2-c8f0-44d5-a0d5-4f8648f676bc",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -174,7 +174,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "Place",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -185,7 +185,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "Place",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -224,17 +224,6 @@
                 },
                 {
                     "name": "",
-                    "id": "8e397076-4d21-4ae6-8766-47c0b9eb571b",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Placing",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "4ccccaca-3fe3-4a99-9a0c-e39e06e813a2",
                     "path": "<Keyboard>/1",
                     "interactions": "",
@@ -254,6 +243,39 @@
                     "action": "SelectTurret",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "90cc5fef-1d57-4419-bd12-6a544f110267",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateMouseWheel",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "2b579ab2-c38b-42f9-9778-9df228071884",
+                    "path": "<Mouse>/scroll/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateMouseWheel",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "be971b6d-69c6-4817-bf2a-4edc7739a444",
+                    "path": "<Mouse>/scroll/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateMouseWheel",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

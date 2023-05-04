@@ -19,9 +19,8 @@ public class PlayerController : MonoBehaviour
    
     [SerializeField]
     private GameObject[] turretPrefabs;
-    private GameObject selectedTurretPrefab;
+    private int turretIndex = 0;
     private GameObject currentPlaceableTurret;
-    private float mouseWheelRotation;
 
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
@@ -37,7 +36,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start(){
         moveable = false;
-        selectedTurretPrefab  = turretPrefabs[0];
     }
 
     public void OnMove(InputAction.CallbackContext context){
@@ -103,7 +101,6 @@ public class PlayerController : MonoBehaviour
     private void Update(){
         if(currentPlaceableTurret != null){
             MoveCurrentPlaceableTurretToMouse();
-            RotateFromMouseWheel();
         }
         if(moveable){
             if(isPc){
@@ -189,20 +186,48 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void RotateFromMouseWheel()
+    private void UpdateSelected() {
+        if(currentPlaceableTurret == null) {
+            if(towersAvailable <= towersPlaced) {
+                return;
+            }
+        } else {
+            Destroy(currentPlaceableTurret);
+        }
+
+        currentPlaceableTurret = Instantiate(turretPrefabs[turretIndex]);
+        currentPlaceableTurret.GetComponent<Turret>().burstSize = 2 + towersAvailable;
+    }
+
+    public void OnScroll(InputAction.CallbackContext context)
     {
-        mouseWheelRotation = Input.mouseScrollDelta.y;
-        currentPlaceableTurret.transform.Rotate(Vector3.up, mouseWheelRotation * 10f);
+        if(context.phase != InputActionPhase.Performed) {
+            return;
+        }
+        if(currentPlaceableTurret == null) {
+            return;
+        }
+        float scroll = context.ReadValue<float>();
+        if(scroll > 0) {
+            Debug.Log(turretIndex);
+            turretIndex += 1;
+        } else if(scroll < 0) {
+            Debug.Log(turretIndex);
+            turretIndex -= 1;
+        }
+        // C# modulo does not handle negative numbers correctly.
+        // Adding length first, then modulo, ensures that only positive numbers are returned
+        turretIndex = (turretIndex + turretPrefabs.Length) % turretPrefabs.Length;
+
+        UpdateSelected();
     }
 
     public void OnPicking(InputAction.CallbackContext context){
         if(context.phase != InputActionPhase.Performed)
             return;
-        if(towersAvailable - towersPlaced > 0 && currentPlaceableTurret == null){
-            currentPlaceableTurret = Instantiate(selectedTurretPrefab);
-            currentPlaceableTurret.GetComponent<Turret>().burstSize = 2 + towersAvailable;
-        }
-        else if(currentPlaceableTurret != null){
+        if(currentPlaceableTurret == null) {
+            UpdateSelected();
+        } else {
             Destroy(currentPlaceableTurret);
         }
     }
@@ -210,14 +235,9 @@ public class PlayerController : MonoBehaviour
     public void OnSelectTurret(InputAction.CallbackContext context){
         string pressedKey = context.control.ToString();
         char pressedKey_char = pressedKey[pressedKey.Length - 1];
-        int turretIndex = pressedKey_char - '0';
-        selectedTurretPrefab = turretPrefabs[turretIndex-1];
+        turretIndex = pressedKey_char - '0' - 1;
 
-        if(currentPlaceableTurret!=null){
-            Destroy(currentPlaceableTurret);
-            currentPlaceableTurret = Instantiate(selectedTurretPrefab);
-        }
-
+        UpdateSelected();
     }
 
     public void addAvailableTowers(int value){

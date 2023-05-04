@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657832, g: 0.49641222, b: 0.57481664, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -359,7 +359,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &890946067
 GameObject:
@@ -437,7 +437,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1142584302 stripped
 GameObject:
@@ -484,24 +484,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3234906509450518239, guid: 761e26497dd62df4b8c80e25bbac2926, type: 3}
     - target: {fileID: 2956193259979519546, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
+      propertyPath: m_ActionEvents.Array.size
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2956193259979519546, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1730200143}
-    - target: {fileID: 2956193259979519546, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnPicking
+      propertyPath: m_ActionEvents.Array.data[8].m_ActionId
+      value: f78378a2-c8f0-44d5-a0d5-4f8648f676bc
       objectReference: {fileID: 0}
     - target: {fileID: 2956193259979519546, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2956193259979519546, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
-      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      propertyPath: m_ActionEvents.Array.data[8].m_ActionName
+      value: Player/RotateMouseWheel[/Mouse/scroll/up,/Mouse/scroll/down]
       objectReference: {fileID: 0}
     - target: {fileID: 2956193259979519550, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
       propertyPath: m_RootOrder
@@ -569,7 +561,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3396104884447338360, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3396104884447338360, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -745,7 +737,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5928217654285960935, guid: 5b34a750e002c7db2bb108f0cb25327a, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5928217654285960935, guid: 5b34a750e002c7db2bb108f0cb25327a, type: 3}
       propertyPath: m_LocalPosition.x
