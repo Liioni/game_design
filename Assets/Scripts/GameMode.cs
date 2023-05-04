@@ -8,7 +8,6 @@ public class GameMode : MonoBehaviour
     [SerializeField]
     UI ui;
     private int startMenuScene = 0;
-    public bool towerMode;
     private bool _activeWave = false;
     private bool _paused = false;
     public int waveNumber = 0;

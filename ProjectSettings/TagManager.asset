@@ -8,14 +8,14 @@ TagManager:
   - TurretBullet
   - Turret
   - Bullet
-  - Tower
   - Coin
   - Manager
+  - Targetable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Turret
   - Water
   - UI
   - 

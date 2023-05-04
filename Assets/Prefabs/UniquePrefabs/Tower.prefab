@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 3354047855800147602}
   m_Layer: 0
   m_Name: Tower
-  m_TagString: Turret
+  m_TagString: Targetable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

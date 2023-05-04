@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     public int towersAvailable = 1;
     public int towersPlaced = 0;
    
-    private int numTurrets = 2;
     [SerializeField]
     private GameObject[] turretPrefabs;
     private GameObject selectedTurretPrefab;
