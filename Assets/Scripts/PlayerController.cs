@@ -209,10 +209,8 @@ public class PlayerController : MonoBehaviour
         }
         float scroll = context.ReadValue<float>();
         if(scroll > 0) {
-            Debug.Log(turretIndex);
             turretIndex += 1;
         } else if(scroll < 0) {
-            Debug.Log(turretIndex);
             turretIndex -= 1;
         }
         // C# modulo does not handle negative numbers correctly.
