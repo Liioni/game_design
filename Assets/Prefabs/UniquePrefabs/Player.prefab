@@ -584,6 +584,7 @@ MonoBehaviour:
   turretPrefabs:
   - {fileID: 3234906509450518239, guid: 761e26497dd62df4b8c80e25bbac2926, type: 3}
   - {fileID: 8352704568136261773, guid: f47f0c5460aae314c8e6fb73ecaea8ae, type: 3}
+  - {fileID: 745834580211298809, guid: 3ee0371981289ca4a90398ef98479d2f, type: 3}
   bulletPrefab: {fileID: 5638477700184001759, guid: 09c23df2a77740844b62e9298fbf5c93, type: 3}
   bulletSpawn: {fileID: 2956193258846866481}
   dashCooldown: 2
