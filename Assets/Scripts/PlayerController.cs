@@ -196,7 +196,6 @@ public class PlayerController : MonoBehaviour
         }
 
         currentPlaceableTurret = Instantiate(turretPrefabs[turretIndex]);
-        currentPlaceableTurret.GetComponent<Turret>().burstSize = 2 + towersAvailable;
     }
 
     public void OnScroll(InputAction.CallbackContext context)
