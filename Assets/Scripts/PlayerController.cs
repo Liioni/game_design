@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         GameObject target = other.gameObject;
-        if (target.tag == "Enemy") {
+        if (target.tag is "Enemy" or "EnemyBullet") {
             switch (GetComponent<Health>().TakeDamage(1)) {
                 case HitResult.Invuln:
                     break;
