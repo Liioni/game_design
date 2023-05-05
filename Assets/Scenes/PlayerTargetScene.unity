@@ -134,6 +134,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad0a53ed37ec3a34a92f4aee3df77bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &337176011 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5042609762948387364, guid: 6ca9905ceac32ddab8d5793e07cf66ee, type: 3}
+  m_PrefabInstance: {fileID: 8066628787113955146}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &557999895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -181,6 +186,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 783390215007345246, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3850668823502630667, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -200,6 +209,18 @@ PrefabInstance:
     - target: {fileID: 8163000168425180753, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909242355142543633, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 337176011}
+    - target: {fileID: 8909242355142543633, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909242355142543633, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_PlaneDistance
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8909242355142543634, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
       propertyPath: m_Name
@@ -847,6 +868,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8066628787281419770, guid: 6ca9905ceac32ddab8d5793e07cf66ee, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 23
+      objectReference: {fileID: 0}
     - target: {fileID: 8066628787886284088, guid: 6ca9905ceac32ddab8d5793e07cf66ee, type: 3}
       propertyPath: player
       value: 
