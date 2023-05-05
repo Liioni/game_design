@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float rotationSpeed;
     public float dashDistance;
+    [SerializeField]
+    private HealthBar health_bar;
     private bool moveable = false;
     private Vector2 mouseLook, joystickLook;
     private Vector3 movement, rotationTarget;
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour
     private void Start(){
         moveable = false;
         selectedTurretPrefab  = turretPrefabs[0];
+        if(health_bar) health_bar.SetMaxHealth(gameObject.GetComponent<Health>().health);
     }
 
     public void OnMove(InputAction.CallbackContext context){
@@ -228,4 +231,9 @@ public class PlayerController : MonoBehaviour
     public void flipMovable(bool value){
         moveable = value;
     }
+
+    public void updateHealthBar(int value){
+        health_bar.SetHealth(value);
+    }
+
 }
