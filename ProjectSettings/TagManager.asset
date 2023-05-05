@@ -11,6 +11,7 @@ TagManager:
   - Tower
   - Coin
   - Manager
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
