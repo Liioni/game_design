@@ -153,6 +153,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 969280585, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1177504520, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -169,10 +173,34 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1730200143}
+    - target: {fileID: 636980565062391797, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 636980565062391797, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3850668823502630667, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 40330893}
+    - target: {fileID: 3993332513942049727, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_Value
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3993332513942049727, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_MaxValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7280113024863415755, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8163000168425180753, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8909242355142543634, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
       propertyPath: m_Name
       value: CanvasUI
@@ -267,6 +295,17 @@ PrefabInstance:
       objectReference: {fileID: 40330893}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+--- !u!114 &557999896 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7024528032839632828, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+  m_PrefabInstance: {fileID: 557999895}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed73f3c365dbd54f9bca853ca3e265e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,6 +506,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2073416680289664769, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
+      propertyPath: isPlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2956193259979519492, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
       propertyPath: m_Name
       value: Player
@@ -479,6 +522,10 @@ PrefabInstance:
       propertyPath: dashSpeed
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 2956193259979519493, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
+      propertyPath: health_bar
+      value: 
+      objectReference: {fileID: 557999896}
     - target: {fileID: 2956193259979519493, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
       propertyPath: turretPrefab
       value: 
