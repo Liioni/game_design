@@ -290,6 +290,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!20 &758205653 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5042609762948387364, guid: 6ca9905ceac32ddab8d5793e07cf66ee, type: 3}
+  m_PrefabInstance: {fileID: 1641532225}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &890946067
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,6 +796,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1310596413, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1863970512, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
       propertyPath: spawner
       value: 
@@ -827,6 +836,14 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1808597864}
+    - target: {fileID: 8909242355142543633, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 758205653}
+    - target: {fileID: 8909242355142543633, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8909242355142543634, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
       propertyPath: m_Name
       value: CanvasUI
