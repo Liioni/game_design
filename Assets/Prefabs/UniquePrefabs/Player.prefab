@@ -563,6 +563,7 @@ MonoBehaviour:
   moveSpeed: 12
   rotationSpeed: 0.15
   dashDistance: 6
+  health_bar: {fileID: 0}
   isPc: 1
   towersAvailable: 1
   towersPlaced: 0
@@ -590,6 +591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  isPlayer: 1
   invulnDuration: 1
 --- !u!82 &3317771021906043046
 AudioSource:

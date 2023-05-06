@@ -12,6 +12,8 @@ public enum HitResult {
 public class Health : MonoBehaviour
 {
     public int health = 1;
+    [SerializeField]
+    private bool isPlayer;
     // public Rigidbody rb;
     public float invulnDuration = 1f;
     private ObjectLifetime invulnTimer;
@@ -33,6 +35,9 @@ public class Health : MonoBehaviour
         invulnTimer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
         invulnTimer.destroyGameObject = false;
         invulnTimer.life_span = invulnDuration;
+        if(isPlayer){
+            gameObject.GetComponent<PlayerController>().updateHealthBar(health);
+        }
         if (health <= 0) {
             return HitResult.Dead;
             // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
