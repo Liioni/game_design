@@ -693,7 +693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3396104884447338361, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3396104884447338361, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
       propertyPath: scalesWithDifficulty
@@ -719,7 +719,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 3396104884474657269}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330617295}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d4a9db069bf6d166974edb989101a2a, type: 3}
   m_Name: 
