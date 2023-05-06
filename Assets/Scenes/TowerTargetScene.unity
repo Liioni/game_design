@@ -128,6 +128,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2956193259979519492, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
   m_PrefabInstance: {fileID: 1808597856}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &78551507 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7024528032839632828, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+  m_PrefabInstance: {fileID: 7810306382475591690}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed73f3c365dbd54f9bca853ca3e265e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &308566309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -279,6 +290,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!20 &758205653 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5042609762948387364, guid: 6ca9905ceac32ddab8d5793e07cf66ee, type: 3}
+  m_PrefabInstance: {fileID: 1641532225}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &890946067
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,6 +610,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2956193259979519493, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
+      propertyPath: health_bar
+      value: 
+      objectReference: {fileID: 78551507}
+    - target: {fileID: 2956193259979519493, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
       propertyPath: turretPrefab
       value: 
       objectReference: {fileID: 3234906509450518239, guid: 761e26497dd62df4b8c80e25bbac2926, type: 3}
@@ -776,6 +796,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1310596413, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1863970512, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
       propertyPath: spawner
       value: 
@@ -788,6 +812,14 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1808597864}
+    - target: {fileID: 636980565062391797, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 636980565062391797, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3850668823502630667, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -804,6 +836,14 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1808597864}
+    - target: {fileID: 8909242355142543633, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 758205653}
+    - target: {fileID: 8909242355142543633, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8909242355142543634, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
       propertyPath: m_Name
       value: CanvasUI
