@@ -29,4 +29,9 @@ public class Enemy : MonoBehaviour
         direction.y = 0f;
         gameObject.GetComponent<CharacterController>().Move(direction * movementSpeed * Time.deltaTime);
     }
+
+    public void LookAtTarget() {
+        Vector3 direction = (target.transform.position - transform.position).normalized;
+        transform.rotation = Quaternion.LookRotation(direction);
+    }
 }
