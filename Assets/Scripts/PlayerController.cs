@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     private ObjectLifetime dashCooldownTimer;
     [SerializeField] private int dashCooldown;
 
+    public ParticleSystem dashParticles;
+
     public AudioSource dashSound;
     public AudioSource hurtSound;
     public AudioSource placingSound;
@@ -92,6 +94,7 @@ public class PlayerController : MonoBehaviour
             dashCooldownTimer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
             dashCooldownTimer.destroyGameObject = false;
             dashSound.Play();
+            dashParticles.Play();
         }
     }
     
