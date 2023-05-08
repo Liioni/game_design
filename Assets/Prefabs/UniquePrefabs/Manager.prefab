@@ -120,7 +120,7 @@ MonoBehaviour:
   - {fileID: -3876222309146799386}
   - {fileID: 3396104884447338363}
   waveSoundtrack: {fileID: 7664412013155291232}
-  placingSoundtrack: {fileID: 3541299162711153308}
+  mainSoundtrack: {fileID: 3541299162711153308}
 --- !u!82 &7664412013155291232
 AudioSource:
   m_ObjectHideFlags: 0
@@ -227,7 +227,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ad45d0e886c395e46b0a66f730e18314, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 756387aa8c4db844da8897e2072072c5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.175
   m_Pitch: 1

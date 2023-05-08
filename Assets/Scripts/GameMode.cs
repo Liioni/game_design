@@ -19,7 +19,7 @@ public class GameMode : MonoBehaviour
     public List<Spawner> waveSpawners;
 
     public AudioSource waveSoundtrack;
-    public AudioSource placingSoundtrack;
+    public AudioSource mainSoundtrack;
 
     private GameObject[] enemies;
     private GameObject[] turrets;
@@ -28,14 +28,14 @@ public class GameMode : MonoBehaviour
         _activeWave = newVal;
         activateScripts(newVal);
         if(newVal){
-            placingSoundtrack.Stop();
+            mainSoundtrack.Stop();
             waveSoundtrack.Play();
             waveNumber++;
             GameObject.FindWithTag("Player").GetComponent<PlayerController>().flipMovable(newVal);
         }
         if(!newVal) {
             waveSoundtrack.Stop();
-            placingSoundtrack.Play();
+            mainSoundtrack.Play();
             GameObject.FindWithTag("Player").GetComponent<PlayerController>().flipMovable(!newVal);
             enemies = GameObject.FindGameObjectsWithTag("Enemy");
             GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin");
