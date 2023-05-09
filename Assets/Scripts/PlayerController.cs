@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
                 // it would mess with the placement of the turret
                 // (it is already shown on the scene so the ray will hit the turret even though it isn't placed)
                 currentPlaceableTurret.layer = LayerMask.NameToLayer("Default");
-                coinsCollected -= currentPlaceableTurret.GetComponent<LootData>().getValue();
+                coinsCollected -= currentPlaceableTurret.GetComponent<Turret>().GetCost();
                 currentPlaceableTurret = null;
                 towersPlaced++;
                 
