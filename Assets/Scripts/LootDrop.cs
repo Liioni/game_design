@@ -11,7 +11,6 @@ public class LootDrop : MonoBehaviour
 
     public void DropLoot(Vector3 pos){
         if(Random.value <= lootFrequency && loot.Length > 0){
-            //Debug.Log(loot[Random.Range(0, loot.Length)]);   
             Instantiate(loot[Random.Range(0, loot.Length)], pos, Quaternion.identity);
         }      
     }

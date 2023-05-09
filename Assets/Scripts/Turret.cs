@@ -10,6 +10,7 @@ public class Turret : MonoBehaviour
     public float range = 15f;
     public float fireRate = 0.5f; // bursts/second
     public float burstSize = 3;
+    public int cost = 0;
     private float fireCooldown = 0f;
     private float burstCount = 0;
 
@@ -122,5 +123,9 @@ public class Turret : MonoBehaviour
         Gizmos.color=Color.red;
         Gizmos.DrawWireSphere(transform.position, range); //params: position, radius
 
+    }
+
+    public int GetCost(){
+        return cost;
     }
 }
