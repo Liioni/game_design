@@ -5,6 +5,7 @@ public class ObjectLifetime : MonoBehaviour
     private float elapsedTime;
     public float life_span = 1.5f;
     public bool destroyGameObject = true;
+    private bool paused = false;
 
     void Start()
     {
@@ -13,17 +14,24 @@ public class ObjectLifetime : MonoBehaviour
 
     void Update()
     {
-        elapsedTime += Time.deltaTime;
-        if(life_span < elapsedTime){
-            if(destroyGameObject) {
-                Destroy(gameObject);
-            } else {
-                Destroy(this);
+        if(!paused){
+            elapsedTime += Time.deltaTime;
+            if(life_span < elapsedTime){
+                if(destroyGameObject) {
+                    Destroy(gameObject);
+                } else {
+                    Destroy(this);
+                }
             }
         }
+        
     }
 
     public float timeLeft(){
         return life_span - elapsedTime;
+    }
+
+    public void setPause(bool value){
+        paused = value;
     }
 }
