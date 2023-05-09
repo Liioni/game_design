@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public bool isPc;
     public int towersAvailable = 1;
     public int towersPlaced = 0;
+    private int coinsCollected = 30;
    
     private int numTurrets = 2;
     [SerializeField]
@@ -59,8 +60,10 @@ public class PlayerController : MonoBehaviour
                 // it would mess with the placement of the turret
                 // (it is already shown on the scene so the ray will hit the turret even though it isn't placed)
                 currentPlaceableTurret.layer = LayerMask.NameToLayer("Default");
+                coinsCollected -= currentPlaceableTurret.GetComponent<Turret>().GetCost();
                 currentPlaceableTurret = null;
                 towersPlaced++;
+                
             }
             return;
         } else {
@@ -105,9 +108,6 @@ public class PlayerController : MonoBehaviour
     public void OnJoystickLook(InputAction.CallbackContext context){
         joystickLook = context.ReadValue<Vector2>();
     }
-
-
-
     
     private void Update(){
         if(currentPlaceableTurret != null){
@@ -180,7 +180,8 @@ public class PlayerController : MonoBehaviour
         }
         if(target.tag == "Coin") {
             Destroy(target);
-            GameObject.FindWithTag("Manager").GetComponent<GameMode>().collectCoin();
+            //GameObject.FindWithTag("Manager").GetComponent<GameMode>().collectCoin();
+            coinsCollected += target.GetComponent<LootData>().getValue();
             coinSound.Play();
         }
     }
@@ -205,9 +206,11 @@ public class PlayerController : MonoBehaviour
     public void OnPicking(InputAction.CallbackContext context){
         if(context.phase != InputActionPhase.Performed)
             return;
-        if(towersAvailable - towersPlaced > 0 && currentPlaceableTurret == null){
-            currentPlaceableTurret = Instantiate(selectedTurretPrefab);
-            currentPlaceableTurret.GetComponent<Turret>().burstSize = 2 + towersAvailable;
+        if(currentPlaceableTurret == null){
+            if(selectedTurretPrefab.GetComponent<Turret>().GetCost() <= coinsCollected){
+                currentPlaceableTurret = Instantiate(selectedTurretPrefab);
+                currentPlaceableTurret.GetComponent<Turret>().burstSize = 2 + towersAvailable;
+            }
         }
         else if(currentPlaceableTurret != null){
             Destroy(currentPlaceableTurret);
@@ -218,11 +221,13 @@ public class PlayerController : MonoBehaviour
         string pressedKey = context.control.ToString();
         char pressedKey_char = pressedKey[pressedKey.Length - 1];
         int turretIndex = pressedKey_char - '0';
-        selectedTurretPrefab = turretPrefabs[turretIndex-1];
+        if(turretPrefabs[turretIndex-1].GetComponent<Turret>().GetCost() <= coinsCollected){
+            selectedTurretPrefab = turretPrefabs[turretIndex-1];
 
-        if(currentPlaceableTurret!=null){
-            Destroy(currentPlaceableTurret);
-            currentPlaceableTurret = Instantiate(selectedTurretPrefab);
+            if(currentPlaceableTurret!=null){
+                Destroy(currentPlaceableTurret);
+                currentPlaceableTurret = Instantiate(selectedTurretPrefab);
+            }
         }
 
     }
@@ -237,6 +242,10 @@ public class PlayerController : MonoBehaviour
 
     public void updateHealthBar(int value){
         health_bar.SetHealth(value);
+    }
+
+    public int getCoinsCollected(){
+        return coinsCollected;
     }
 
 }

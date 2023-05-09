@@ -72,12 +72,12 @@ public class GameMode : MonoBehaviour
             enemies = GameObject.FindGameObjectsWithTag("Enemy");
             turrets = GameObject.FindGameObjectsWithTag("Turret");
             pauseGame();
-            timer.setPause(true);
+            if(timer) timer.setPause(true);
         }else{
             pauseGame();
             enemies = null;
             turrets = null;
-            timer.setPause(false);
+            if(timer) timer.setPause(false);
         }
     }
 

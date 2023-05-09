@@ -34,6 +34,7 @@ public class Bullet : MonoBehaviour
                     Destroy(target);
                     break;
             }
+            if(target.GetComponent<LootDrop>()) target.GetComponent<LootDrop>().DropLoot(transform.position);
             GameObject effect = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(effect, 1.5f);
             Destroy(gameObject);
