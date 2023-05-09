@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public bool isPc;
     public int towersAvailable = 1;
     public int towersPlaced = 0;
-    private int coinsCollected = 15;
+    private int coinsCollected = 30;
    
     private int numTurrets = 2;
     [SerializeField]
@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour
     public void OnPicking(InputAction.CallbackContext context){
         if(context.phase != InputActionPhase.Performed)
             return;
-        if(towersAvailable - towersPlaced > 0 && currentPlaceableTurret == null){
+        if(currentPlaceableTurret == null){
             if(selectedTurretPrefab.GetComponent<Turret>().GetCost() <= coinsCollected){
                 currentPlaceableTurret = Instantiate(selectedTurretPrefab);
                 currentPlaceableTurret.GetComponent<Turret>().burstSize = 2 + towersAvailable;
@@ -221,11 +221,13 @@ public class PlayerController : MonoBehaviour
         string pressedKey = context.control.ToString();
         char pressedKey_char = pressedKey[pressedKey.Length - 1];
         int turretIndex = pressedKey_char - '0';
-        selectedTurretPrefab = turretPrefabs[turretIndex-1];
+        if(turretPrefabs[turretIndex-1].GetComponent<Turret>().GetCost() <= coinsCollected){
+            selectedTurretPrefab = turretPrefabs[turretIndex-1];
 
-        if(currentPlaceableTurret!=null){
-            Destroy(currentPlaceableTurret);
-            currentPlaceableTurret = Instantiate(selectedTurretPrefab);
+            if(currentPlaceableTurret!=null){
+                Destroy(currentPlaceableTurret);
+                currentPlaceableTurret = Instantiate(selectedTurretPrefab);
+            }
         }
 
     }
