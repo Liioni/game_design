@@ -19,20 +19,26 @@ public class GameMode : MonoBehaviour
     public List<Spawner> waveSpawners;
 
     public AudioSource waveSoundtrack;
+    public AudioSource mainSoundtrack;
 
     private GameObject[] enemies;
     private GameObject[] turrets;
-
+    private AudioSource menuSoundtrack;
     void setActiveWave(bool newVal) { 
         _activeWave = newVal;
         activateScripts(newVal);
         if(newVal){
+            if(menuSoundtrack.isPlaying) 
+                menuSoundtrack.Stop();
+            mainSoundtrack.Stop();
             waveSoundtrack.Play();
             waveNumber++;
             GameObject.FindWithTag("Player").GetComponent<PlayerController>().flipMovable(newVal);
         }
         if(!newVal) {
             waveSoundtrack.Stop();
+            if(!menuSoundtrack.isPlaying) 
+                mainSoundtrack.Play();
             GameObject.FindWithTag("Player").GetComponent<PlayerController>().flipMovable(!newVal);
             enemies = GameObject.FindGameObjectsWithTag("Enemy");
             GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin");
@@ -97,6 +103,7 @@ public class GameMode : MonoBehaviour
     }
 
     void Start() {
+        menuSoundtrack = (AudioSource)GameObject.FindGameObjectWithTag("Soundtrack").GetComponent<AudioSource>();
         // To ensure each spawner is set correctly
         setActiveWave(_activeWave);
         // To make sure the Buttons show before first wave

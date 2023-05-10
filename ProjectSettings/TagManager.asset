@@ -12,6 +12,7 @@ TagManager:
   - Coin
   - Manager
   - EnemyBullet
+  - Soundtrack
   layers:
   - Default
   - TransparentFX
