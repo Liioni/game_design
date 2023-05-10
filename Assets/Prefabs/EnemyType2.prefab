@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -4901023225716592285}
   - component: {fileID: 4226206802955111461}
   - component: {fileID: -9156212910283352688}
+  - component: {fileID: -4237925646577855266}
   - component: {fileID: -5654871193771344927}
   m_Layer: 2
   m_Name: EnemyType2
@@ -133,7 +134,6 @@ MonoBehaviour:
   movementSpeed: 2
   bulletSpawnPoint: {fileID: 0}
   bullet: {fileID: 6052535322344953114, guid: 953f2584782ed56428cd2ae7d806e403, type: 3}
-  amountOfBullets: 2
 --- !u!114 &-9156212910283352688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +147,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  isPlayer: 0
   invulnDuration: 0
+--- !u!114 &-4237925646577855266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2316001390862386333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ebebfd35e597b49b727485ff8c02f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loot:
+  - {fileID: 1850503077362125822, guid: c786bead3e10ebf42b07eb2cb890d820, type: 3}
+  lootFrequency: 0.3
 --- !u!143 &-5654871193771344927
 CharacterController:
   m_ObjectHideFlags: 0

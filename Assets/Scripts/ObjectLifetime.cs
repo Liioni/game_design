@@ -24,7 +24,6 @@ public class ObjectLifetime : MonoBehaviour
                 }
             }
         }
-        
     }
 
     public float timeLeft(){

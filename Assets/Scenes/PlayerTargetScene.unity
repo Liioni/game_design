@@ -563,6 +563,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1730200143}
     - target: {fileID: 2956193259979519546, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 40330893}
+    - target: {fileID: 2956193259979519546, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnPicking
       objectReference: {fileID: 0}
@@ -698,6 +702,10 @@ PrefabInstance:
       propertyPath: ui
       value: 
       objectReference: {fileID: 1863970512}
+    - target: {fileID: 3396104884447338363, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3396104884447338366, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
       propertyPath: m_Name
       value: Manager

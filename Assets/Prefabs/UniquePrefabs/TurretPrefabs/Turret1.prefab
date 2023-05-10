@@ -50,6 +50,7 @@ MonoBehaviour:
   range: 10
   fireRate: 0.5
   burstSize: 3
+  cost: 15
   enemyTag: Enemy
   turnSpeed: 10
   bulletPrefab: {fileID: 1850503077362125822, guid: 37aaca4b8fc47fb4d8e794134602bcb8, type: 3}
