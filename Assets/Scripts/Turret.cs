@@ -23,7 +23,6 @@ public class Turret : MonoBehaviour
 
     public Transform partToRotate;
 
-    public AudioSource shootingSound;
     public ParticleSystem shootingParticles;
 
     public bool chaseEnemy;
@@ -83,7 +82,7 @@ public class Turret : MonoBehaviour
             return;
         }
         shootingParticles.Play();
-        shootingSound.Play();
+        SoundManager.Instance.PlaySFX("Turret1 Shoot");
         GameObject instance = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         if(chaseEnemy){
             Bullet bullet = instance.gameObject.GetComponent<Bullet>();
