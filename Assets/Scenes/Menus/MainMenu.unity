@@ -900,8 +900,12 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: f590eb69a9932c140b7b8eedff8c70af, type: 3}
   - name: Turret2 Shoot
     clip: {fileID: 8300000, guid: 5b5c013a85f2b394498b5d1c6f887331, type: 3}
+  - name: Enemy Shoot
+    clip: {fileID: 8300000, guid: e9592cc56646f51418825c1fbc2f889d, type: 3}
   musicSource: {fileID: 1423439057}
   sfxSource: {fileID: 337838558}
+  musicSlider: {fileID: 388442188}
+  sfxSlider: {fileID: 1481611227}
 --- !u!4 &649323484
 Transform:
   m_ObjectHideFlags: 0
