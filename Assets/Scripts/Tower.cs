@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Tower : MonoBehaviour
 {
-    public AudioSource damageSound;
 
     private void OnTriggerEnter(Collider collider)
     {
@@ -15,7 +14,7 @@ public class Tower : MonoBehaviour
                 case HitResult.Invuln:
                     break;
                 case HitResult.Hit:
-                    damageSound.Play();
+                    SoundManager.Instance.PlaySFX("Tower Damage");
                     Destroy(collider.gameObject);
                     break;
                 case HitResult.Dead:
