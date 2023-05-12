@@ -8,6 +8,8 @@ public class SoundManager : MonoBehaviour
    public static SoundManager Instance;
    public Sound[] musicSounds, sfxSounds;
    public AudioSource musicSource, sfxSource;
+   public Slider musicSlider, sfxSlider;
+
 
    private void Awake(){
       if(Instance==null){
@@ -21,6 +23,7 @@ public class SoundManager : MonoBehaviour
 
    private void Start(){
       PlayMusic("Main Theme");
+      LoadValues();
    }
 
    public void PlayMusic(string name){
@@ -48,10 +51,20 @@ public class SoundManager : MonoBehaviour
 
    public void ChangeMusicVolume(float volume){
          musicSource.volume = volume;
+         PlayerPrefs.SetFloat("MusicVolume", volume);
    }
 
    public void ChangeSFXVolume(float volume){
          sfxSource.volume = volume;
+         PlayerPrefs.SetFloat("SFXVolume", volume);
+   }
+
+   void LoadValues(){
+      float musicVolume = PlayerPrefs.GetFloat("MusicVolume");
+      musicSlider.value = musicVolume;
+      float sfxVolume = PlayerPrefs.GetFloat("SFXVolume");
+      sfxSlider.value = sfxVolume;
+
    }
    
 }
