@@ -26,6 +26,7 @@ public class Turret : MonoBehaviour
     public ParticleSystem shootingParticles;
 
     public bool chaseEnemy;
+    public string turretType;
     // Start is called before the first frame update
     void Start()
     {
@@ -82,7 +83,7 @@ public class Turret : MonoBehaviour
             return;
         }
         shootingParticles.Play();
-        SoundManager.Instance.PlaySFX("Turret1 Shoot");
+        SoundManager.Instance.PlaySFX(turretType + " Shoot");
         GameObject instance = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         if(chaseEnemy){
             Bullet bullet = instance.gameObject.GetComponent<Bullet>();
