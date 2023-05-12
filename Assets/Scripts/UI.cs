@@ -29,7 +29,7 @@ public class UI : MonoBehaviour
 
         turretsText.text = playerController.towersPlaced.ToString() + "/" + playerController.towersAvailable.ToString();
 
-        coinsText.text = gamemode.coinsCollected.ToString();
+        coinsText.text = playerController.getCoinsCollected().ToString();
 
         if(gamemode.timer) timerText.text = gamemode.timer.timeLeft().ToString("0.0");
         else timerText.text = "0";

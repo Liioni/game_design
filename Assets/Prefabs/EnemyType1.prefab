@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3486948376680602825}
   - component: {fileID: 5206661030518263330}
   - component: {fileID: 6877215079959235732}
+  - component: {fileID: 3491747852732099124}
   - component: {fileID: -1296482794492263487}
   m_Layer: 2
   m_Name: EnemyType1
@@ -143,7 +144,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  isPlayer: 0
   invulnDuration: 0
+--- !u!114 &3491747852732099124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5206661030518263335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ebebfd35e597b49b727485ff8c02f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loot:
+  - {fileID: 1850503077362125822, guid: c786bead3e10ebf42b07eb2cb890d820, type: 3}
+  lootFrequency: 0.2
 --- !u!143 &-1296482794492263487
 CharacterController:
   m_ObjectHideFlags: 0

@@ -18,21 +18,20 @@ public class GameMode : MonoBehaviour
 
     public List<Spawner> waveSpawners;
 
-    public AudioSource waveSoundtrack;
-
     private GameObject[] enemies;
     private GameObject[] turrets;
-
     void setActiveWave(bool newVal) { 
         _activeWave = newVal;
         activateScripts(newVal);
         if(newVal){
-            waveSoundtrack.Play();
+            SoundManager.Instance.musicSource.Stop();
+            SoundManager.Instance.PlayMusic("Wave Theme");
             waveNumber++;
             GameObject.FindWithTag("Player").GetComponent<PlayerController>().flipMovable(newVal);
         }
         if(!newVal) {
-            waveSoundtrack.Stop();
+             SoundManager.Instance.musicSource.Stop();
+            SoundManager.Instance.PlayMusic("Main Theme");
             GameObject.FindWithTag("Player").GetComponent<PlayerController>().flipMovable(!newVal);
             enemies = GameObject.FindGameObjectsWithTag("Enemy");
             GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin");
@@ -72,12 +71,12 @@ public class GameMode : MonoBehaviour
             enemies = GameObject.FindGameObjectsWithTag("Enemy");
             turrets = GameObject.FindGameObjectsWithTag("Turret");
             pauseGame();
-            timer.setPause(true);
+            if(timer) timer.setPause(true);
         }else{
             pauseGame();
             enemies = null;
             turrets = null;
-            timer.setPause(false);
+            if(timer) timer.setPause(false);
         }
     }
 
@@ -115,6 +114,7 @@ public class GameMode : MonoBehaviour
     }
 
     public void Loose() {
+        SoundManager.Instance.musicSource.Stop();
         SceneManager.LoadScene(startMenuScene);
     }
 

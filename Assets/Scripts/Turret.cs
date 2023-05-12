@@ -10,6 +10,7 @@ public class Turret : MonoBehaviour
     public float range = 15f;
     public float fireRate = 0.5f; // bursts/second
     public float burstSize = 3;
+    public int cost = 0;
     private float fireCooldown = 0f;
     private float burstCount = 0;
 
@@ -22,10 +23,10 @@ public class Turret : MonoBehaviour
 
     public Transform partToRotate;
 
-    public AudioSource shootingSound;
     public ParticleSystem shootingParticles;
 
     public bool chaseEnemy;
+    public string turretType;
     // Start is called before the first frame update
     void Start()
     {
@@ -82,7 +83,7 @@ public class Turret : MonoBehaviour
             return;
         }
         shootingParticles.Play();
-        shootingSound.Play();
+        SoundManager.Instance.PlaySFX(turretType + " Shoot");
         GameObject instance = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         if(chaseEnemy){
             Bullet bullet = instance.gameObject.GetComponent<Bullet>();
@@ -122,5 +123,9 @@ public class Turret : MonoBehaviour
         Gizmos.color=Color.red;
         Gizmos.DrawWireSphere(transform.position, range); //params: position, radius
 
+    }
+
+    public int GetCost(){
+        return cost;
     }
 }
