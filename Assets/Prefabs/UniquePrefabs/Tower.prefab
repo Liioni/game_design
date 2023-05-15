@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 6200611858618459301}
   - component: {fileID: 7528953035564229456}
   - component: {fileID: -2561390817017564202}
-  - component: {fileID: 3354047855800147602}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Tower
@@ -122,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c794613da64c9514eb235ca3d2292d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageSound: {fileID: 3354047855800147602}
+  damageSound: {fileID: 0}
 --- !u!114 &-2561390817017564202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  isPlayer: 0
   isPlayer: 0
   invulnDuration: 3
 --- !u!82 &3354047855800147602

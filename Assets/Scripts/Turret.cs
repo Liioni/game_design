@@ -23,10 +23,10 @@ public class Turret : MonoBehaviour
 
     public Transform partToRotate;
 
-    public AudioSource shootingSound;
     public ParticleSystem shootingParticles;
 
     public bool chaseEnemy;
+    public string turretType;
     // Start is called before the first frame update
     void Start()
     {
@@ -83,7 +83,7 @@ public class Turret : MonoBehaviour
             return;
         }
         shootingParticles.Play();
-        shootingSound.Play();
+        SoundManager.Instance.PlaySFX(turretType + " Shoot");
         GameObject instance = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         if(chaseEnemy){
             Bullet bullet = instance.gameObject.GetComponent<Bullet>();

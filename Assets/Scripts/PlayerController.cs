@@ -35,11 +35,6 @@ public class PlayerController : MonoBehaviour
 
     public ParticleSystem dashParticles;
 
-    public AudioSource dashSound;
-    public AudioSource hurtSound;
-    public AudioSource placingSound;
-    public AudioSource coinSound;
-    
 
     private void Start(){
         moveable = false;
@@ -55,7 +50,7 @@ public class PlayerController : MonoBehaviour
     public void OnShoot(InputAction.CallbackContext context){
         if(currentPlaceableTurret) {
             if(context.phase == InputActionPhase.Performed) {
-                placingSound.Play();
+                SoundManager.Instance.PlaySFX("Turret Placement");
                 // We have to en-/disable raycasting for turrets as otherwise
                 // it would mess with the placement of the turret
                 // (it is already shown on the scene so the ray will hit the turret even though it isn't placed)
@@ -96,7 +91,7 @@ public class PlayerController : MonoBehaviour
             cct.enabled = true;
             dashCooldownTimer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
             dashCooldownTimer.destroyGameObject = false;
-            dashSound.Play();
+            SoundManager.Instance.PlaySFX("Dash");
             dashParticles.Play();
         }
     }
@@ -170,7 +165,7 @@ public class PlayerController : MonoBehaviour
                 case HitResult.Invuln:
                     break;
                 case HitResult.Hit:
-                    hurtSound.Play();
+                    SoundManager.Instance.PlaySFX("Player Hurt");
                     break;
                 case HitResult.Dead:
                     GameObject.FindWithTag("Manager").GetComponent<GameMode>().Loose();
@@ -182,7 +177,7 @@ public class PlayerController : MonoBehaviour
             Destroy(target);
             //GameObject.FindWithTag("Manager").GetComponent<GameMode>().collectCoin();
             coinsCollected += target.GetComponent<LootData>().getValue();
-            coinSound.Play();
+            SoundManager.Instance.PlaySFX("Coin Pickup");
         }
     }
 
