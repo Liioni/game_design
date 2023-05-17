@@ -36,7 +36,8 @@ public class EnemyType3 : Enemy
     }
 
     public void BlowUp() {
-        Instantiate(explosion, transform.position, Quaternion.identity);
+        GameObject tempExplosion = Instantiate(explosion, transform.position, Quaternion.identity);
+        Destroy(tempExplosion, 1f);
         Destroy(gameObject);
     }
 }
