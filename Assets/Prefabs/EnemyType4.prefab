@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1849524991667357376}
   - component: {fileID: 8552122042855465056}
   - component: {fileID: 2944197777821157781}
-  - component: {fileID: 886948448509164153}
+  - component: {fileID: 6773735289872046971}
   m_Layer: 2
   m_Name: EnemyType4
   m_TagString: Enemy
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a68bcf6667d9ae469bbab8abe8a32d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 100
   isPlayer: 0
   invulnDuration: 0
 --- !u!114 &8552122042855465056
@@ -165,7 +165,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &886948448509164153
+--- !u!114 &6773735289872046971
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,3 +177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10dafbd069bd5e943a86a55c0a307de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  movementSpeed: 2
+  fallingSphere: {fileID: 9222731412351180560, guid: aa56bfc753c829a488d1db6e7e794946, type: 3}
