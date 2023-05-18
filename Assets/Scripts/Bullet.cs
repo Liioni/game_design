@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         GameObject target = collision.gameObject;
-        if (target.tag == "Enemy") {
+        if (target.tag == "Enemy" || target.tag == "Explosion") {
             switch (target.GetComponent<Health>().TakeDamage(1)) {
                 case HitResult.Invuln:
                     break;
