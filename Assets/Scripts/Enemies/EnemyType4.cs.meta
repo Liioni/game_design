@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 10dafbd069bd5e943a86a55c0a307de2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - target: {instanceID: 0}
+  - fallingSphere: {fileID: 9222731412351180560, guid: aa56bfc753c829a488d1db6e7e794946, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
