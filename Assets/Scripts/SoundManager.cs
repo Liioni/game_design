@@ -8,13 +8,12 @@ public class SoundManager : MonoBehaviour
    public static SoundManager Instance;
    public Sound[] musicSounds, sfxSounds;
    public AudioSource musicSource, sfxSource;
-   public Slider musicSlider, sfxSlider;
+   public List<Slider> musicSliders, sfxSliders;
 
 
    private void Awake(){
       if(Instance==null){
          Instance=this;
-         DontDestroyOnLoad(gameObject);
       }
       else{
          Destroy(gameObject);
@@ -22,6 +21,9 @@ public class SoundManager : MonoBehaviour
    }
 
    private void Start(){
+      PlayerPrefs.SetFloat("MusicVolume", 0.5f);
+      PlayerPrefs.SetFloat("SFXVolume", 0.5f);
+      DontDestroyOnLoad(gameObject);
       PlayMusic("Main Theme");
       LoadValues();
    }
@@ -59,12 +61,19 @@ public class SoundManager : MonoBehaviour
          PlayerPrefs.SetFloat("SFXVolume", volume);
    }
 
-   void LoadValues(){
+   public void LoadValues(){
       float musicVolume = PlayerPrefs.GetFloat("MusicVolume");
-      musicSlider.value = musicVolume;
+      foreach (Slider slider in musicSliders)
+      {
+         slider.value = musicVolume;
+      }
       float sfxVolume = PlayerPrefs.GetFloat("SFXVolume");
-      sfxSlider.value = sfxVolume;
+      foreach (Slider slider in sfxSliders)
+      {
+         slider.value = sfxVolume;
+      }
 
    }
+
    
 }
