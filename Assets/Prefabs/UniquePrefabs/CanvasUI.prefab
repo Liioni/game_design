@@ -3452,7 +3452,7 @@ GameObject:
   - component: {fileID: 4279759964652672602}
   m_Layer: 5
   m_Name: Sfx Slider
-  m_TagString: Untagged
+  m_TagString: SFXSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4225,7 +4225,7 @@ GameObject:
   - component: {fileID: 1708375033817763450}
   m_Layer: 5
   m_Name: Music Slider
-  m_TagString: Untagged
+  m_TagString: MusicSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
