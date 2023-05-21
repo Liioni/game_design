@@ -71,6 +71,7 @@ public class EnemyType2 : Enemy
             {
                 SpawnCircleOfBullets(amountOfBullets);
                 timer = 0f;
+                SoundManager.Instance.PlaySFX("Enemy Shoot");
             }
         }
     }
