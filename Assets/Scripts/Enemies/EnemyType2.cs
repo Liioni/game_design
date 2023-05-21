@@ -54,7 +54,7 @@ public class EnemyType2 : Enemy
             Vector3 calculatedDirection = new Vector3(Mathf.Sin(Mathf.Deg2Rad * angle), 0f, Mathf.Cos(Mathf.Deg2Rad * angle));
             variables.direction = currentRotation * calculatedDirection;
             variables.speed = speed;
-            Destroy(sphere, 5.0f);
+            //Destroy(sphere, 5.0f);
         }
     }
 
