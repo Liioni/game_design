@@ -8,6 +8,7 @@ public class GameMode : MonoBehaviour
     [SerializeField]
     UI ui;
     private int startMenuScene = 0;
+    private int gameOverScene = 4;
     public bool towerMode;
     private bool _activeWave = false;
     private bool _paused = false;
@@ -30,7 +31,7 @@ public class GameMode : MonoBehaviour
             GameObject.FindWithTag("Player").GetComponent<PlayerController>().flipMovable(newVal);
         }
         if(!newVal) {
-             SoundManager.Instance.musicSource.Stop();
+            SoundManager.Instance.musicSource.Stop();
             SoundManager.Instance.PlayMusic("Main Theme");
             GameObject.FindWithTag("Player").GetComponent<PlayerController>().flipMovable(!newVal);
             enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -115,7 +116,7 @@ public class GameMode : MonoBehaviour
 
     public void Loose() {
         SoundManager.Instance.musicSource.Stop();
-        SceneManager.LoadScene(startMenuScene);
+        SceneManager.LoadScene(gameOverScene);
     }
 
     void Update() {
