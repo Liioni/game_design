@@ -85,6 +85,7 @@ public class FallingSphere : MonoBehaviour
                 if (transform.position.y <= 0.1f)
                 {
                     Instantiate(splashEffect, transform.position, Quaternion.identity);
+                    SoundManager.Instance.PlaySFX("Sphere Explosion");
                     phase++;
                 }
                 break;

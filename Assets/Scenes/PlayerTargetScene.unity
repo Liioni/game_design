@@ -38,7 +38,11 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
+<<<<<<< HEAD
   m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641228, b: 0.57481676, a: 1}
+=======
+  m_IndirectSpecularColor: {r: 0.44657832, g: 0.49641222, b: 0.57481664, a: 1}
+>>>>>>> 2f8b6ef06d0f46df8939d9b6be177fa5d5de5c78
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2807,8 +2811,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8066628787281419770, guid: 6ca9905ceac32ddab8d5793e07cf66ee, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 23
+      propertyPath: m_Depth
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8066628787886284088, guid: 6ca9905ceac32ddab8d5793e07cf66ee, type: 3}
       propertyPath: player
