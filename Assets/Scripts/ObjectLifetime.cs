@@ -30,7 +30,12 @@ public class ObjectLifetime : MonoBehaviour
         return life_span - elapsedTime;
     }
 
+    public float getLifeSpan(){
+        return life_span;
+    }
+
     public void setPause(bool value){
         paused = value;
     }
+
 }

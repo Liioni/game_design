@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public float dashDistance;
     [SerializeField]
     private HealthBar health_bar;
+    [SerializeField]
+    private CooldownScript teleport_cooldown;
     private bool moveable = false;
     private Vector2 mouseLook, joystickLook;
     private Vector3 movement, rotationTarget;
@@ -54,7 +56,6 @@ public class PlayerController : MonoBehaviour
                 // We have to en-/disable raycasting for turrets as otherwise
                 // it would mess with the placement of the turret
                 // (it is already shown on the scene so the ray will hit the turret even though it isn't placed)
-                currentPlaceableTurret.layer = LayerMask.NameToLayer("Default");
                 coinsCollected -= currentPlaceableTurret.GetComponent<Turret>().GetCost();
                 currentPlaceableTurret = null;
                 towersPlaced++;
@@ -66,14 +67,14 @@ public class PlayerController : MonoBehaviour
                 // TOOD sound?
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hitInfo;
-                if(Physics.Raycast(ray, out hitInfo)){
+                var layerMask = 1 << LayerMask.NameToLayer("Turret");
+                if(Physics.Raycast(ray, out hitInfo, Mathf.Infinity, layerMask)){
                     GameObject hit = hitInfo.transform.gameObject;
-                    Debug.Log(hit);
                     if(hit.tag != "Turret")
                         return;
                     currentPlaceableTurret = hit;
-                    currentPlaceableTurret.layer = LayerMask.NameToLayer("Ignore Raycast");
                     towersPlaced--;
+                    coinsCollected += currentPlaceableTurret.GetComponent<Turret>().GetCost();
                 }
             }
         }
@@ -91,6 +92,7 @@ public class PlayerController : MonoBehaviour
             cct.enabled = true;
             dashCooldownTimer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
             dashCooldownTimer.destroyGameObject = false;
+            teleport_cooldown.SetCooldown(dashCooldownTimer);
             SoundManager.Instance.PlaySFX("Dash");
             dashParticles.Play();
         }
@@ -112,9 +114,10 @@ public class PlayerController : MonoBehaviour
         if(moveable){
             if(isPc){
                 RaycastHit hit;
+                var layerMask = 1 << LayerMask.NameToLayer("Default");
                 Ray ray = Camera.main.ScreenPointToRay(mouseLook);
 
-                if(Physics.Raycast(ray, out hit)){
+                if(Physics.Raycast(ray, out hit, Mathf.Infinity)){
                     rotationTarget = hit.point;
                 }
 
@@ -185,7 +188,8 @@ public class PlayerController : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
-        if(Physics.Raycast(ray, out hitInfo)){
+        var layerMask = 1 << LayerMask.NameToLayer("Default");
+        if(Physics.Raycast(ray, out hitInfo, Mathf.Infinity, layerMask)){
             currentPlaceableTurret.transform.position = hitInfo.point;
             // We want the turret to rotate freely (e.g. mousewheel)
             // currentPlaceableTurret.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
@@ -231,7 +235,7 @@ public class PlayerController : MonoBehaviour
         towersAvailable += value;
     }
 
-    public void flipMovable(bool value){
+    public void setMovable(bool value){
         moveable = value;
     }
 

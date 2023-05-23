@@ -18,6 +18,8 @@ public class Spawner : MonoBehaviour
     public GameObject telegraphPrefab;
     public float telegraphTime = 0.5f;
 
+    public bool chaseTowerIfExists = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,7 +65,14 @@ public class Spawner : MonoBehaviour
             yield return new WaitForSeconds(telegraphTime);
             Destroy(marker);
         }
-        Instantiate(prefab, pos, Quaternion.identity);
+        if(active) {
+            GameObject enemy = Instantiate(prefab, pos, Quaternion.identity);
+            GameObject tower = GameObject.FindGameObjectWithTag("Tower");
+            enemy.GetComponent<Enemy>().target = GameObject.FindGameObjectWithTag("Player");
+            if (chaseTowerIfExists && tower) {
+              enemy.GetComponent<Enemy>().target = tower;
+            }
+        }
     }
 
     private void addCooldown() {
