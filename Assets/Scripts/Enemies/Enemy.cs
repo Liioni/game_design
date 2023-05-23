@@ -15,12 +15,6 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        var gameMode = GameObject.FindObjectOfType<GameMode>();
-        if (gameMode.towerMode) {
-            target = GameObject.FindGameObjectWithTag("Tower");
-        } else {
-            target = GameObject.FindGameObjectWithTag("Player");
-        }
     }
 
     public void ChaseTarget() {
