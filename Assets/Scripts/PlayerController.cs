@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public float dashDistance;
     [SerializeField]
     private HealthBar health_bar;
+    [SerializeField]
+    private CooldownScript teleport_cooldown;
     private bool moveable = false;
     private Vector2 mouseLook, joystickLook;
     private Vector3 movement, rotationTarget;
@@ -91,6 +93,7 @@ public class PlayerController : MonoBehaviour
             cct.enabled = true;
             dashCooldownTimer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
             dashCooldownTimer.destroyGameObject = false;
+            teleport_cooldown.SetCooldown(dashCooldownTimer);
             SoundManager.Instance.PlaySFX("Dash");
             dashParticles.Play();
         }

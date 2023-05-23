@@ -376,6 +376,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2518503561510777587, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518503561510777587, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518503561510777587, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3527065734614646232, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4292864501
@@ -397,6 +409,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4258442459501002859, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627306104471286443, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627306104471286443, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
@@ -937,6 +957,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e3fe616d526b214db636570c7c8f2fa, type: 3}
+--- !u!114 &1485585759 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2061700365284219323, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+  m_PrefabInstance: {fileID: 557999895}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8444c53ebb8e504da7150f724b5ef50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1730200143 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2956193259979519493, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
@@ -983,6 +1014,10 @@ PrefabInstance:
       propertyPath: turretPrefab
       value: 
       objectReference: {fileID: 3234906509450518239, guid: 761e26497dd62df4b8c80e25bbac2926, type: 3}
+    - target: {fileID: 2956193259979519493, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
+      propertyPath: teleport_cooldown
+      value: 
+      objectReference: {fileID: 1485585759}
     - target: {fileID: 2956193259979519546, guid: 1375aa2c6b900ba4291a4da0e403a521, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
