@@ -30,7 +30,7 @@ public class CaneraFollow : MonoBehaviour
         mainCamera = GameObject.Find("CameraHolder").transform.Find("Main Camera");
         target = player.transform;
         
-        d = 15f;
+        d = 35f;
         xAngle = 65f;
     }
 
