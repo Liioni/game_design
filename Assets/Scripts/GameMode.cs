@@ -18,6 +18,8 @@ public class GameMode : MonoBehaviour
     public ObjectLifetime timer;
 
     public List<Spawner> waveSpawners;
+    private float[] waveLength;
+    private float maxWaveLength = 60f;
 
     private GameObject[] enemies;
     private GameObject[] turrets;
@@ -49,7 +51,12 @@ public class GameMode : MonoBehaviour
             if(timer) Destroy(timer);
             timer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
             timer.destroyGameObject = false;
-            timer.life_span = 30;
+            if (waveNumber > waveLength.Length) {
+                timer.life_span = maxWaveLength;
+            }
+            else {
+                timer.life_span = waveLength[waveNumber - 1];
+            }
         }
     }
 
@@ -101,6 +108,7 @@ public class GameMode : MonoBehaviour
         setActiveWave(_activeWave);
         // To make sure the Buttons show before first wave
         ui.setButtonsActive(true);
+        waveLength = new float[] { 30f, 30f, 45f, 45f};
     }
 
     public void collectCoin() {
