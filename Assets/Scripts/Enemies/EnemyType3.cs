@@ -37,6 +37,7 @@ public class EnemyType3 : Enemy
 
     public void BlowUp() {
         GameObject tempExplosion = Instantiate(explosion, transform.position, Quaternion.identity);
+        SoundManager.Instance.PlaySFX("Enemy3 Splash");
         Destroy(tempExplosion, 1f);
         Destroy(gameObject);
     }
