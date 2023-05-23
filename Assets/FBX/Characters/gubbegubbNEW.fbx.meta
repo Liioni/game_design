@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 710d7208587274590a140b7a877632f8
+guid: 558e4e43903fa42c79d69da566d70828
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,38 +7,43 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Eyes
-    second: {fileID: 2100000, guid: 4789fd6530d1f4082b7903c45606d8de, type: 2}
+      name: Cloak
+    second: {fileID: 2100000, guid: 43a744bc28fb74ba7b864140e2ef7804, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Leather
-    second: {fileID: 2100000, guid: 9d73fafd522774b0cb2fe32da154f9db, type: 2}
+      name: Glasses
+    second: {fileID: 2100000, guid: 7d3491556de82404aa00dc10649c44a2, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Leather2
-    second: {fileID: 2100000, guid: 8a159c727566f452fb00acaabd433d24, type: 2}
+      name: Hair
+    second: {fileID: 2100000, guid: b2cdca92997ee4bb7af3b7f6d891007b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Leather3
-    second: {fileID: 2100000, guid: a72120753673840a4aeb4426509a20f6, type: 2}
+      name: Material
+    second: {fileID: 2100000, guid: 30987c18edb69474bacc8a56846448a6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Orc skin
-    second: {fileID: 2100000, guid: 83f45c2a3b77c4797ae77da3bab43370, type: 2}
+      name: Pants
+    second: {fileID: 2100000, guid: e1117893f4c5b459f93fd191a97bfda1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Shoulder
-    second: {fileID: 2100000, guid: 9baf6df96463f48bba6e228c9dbec708, type: 2}
+      name: Shirt
+    second: {fileID: 2100000, guid: 365f00e6be74c4609aa366d9d4d768a9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Teeth
-    second: {fileID: 2100000, guid: 4fc54eb983b1b4c1d90827ed8bbe25cb, type: 2}
+      name: Shoes
+    second: {fileID: 2100000, guid: c88a77e7153ce4bef9113ce60f74233e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skintone
+    second: {fileID: 2100000, guid: 409275a34df73498f84298cfeb117f8f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -66,7 +71,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|ArmatureAction.001
+      takeName: Armature|ArmatureAction.001
+      internalID: -1422011007694221501
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -86,7 +120,7 @@ ModelImporter:
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
-    bakeAxisConversion: 0
+    bakeAxisConversion: 1
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
@@ -132,7 +166,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
