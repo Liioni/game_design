@@ -116,6 +116,7 @@ public class GameMode : MonoBehaviour
 
     public void Loose() {
         SoundManager.Instance.musicSource.Stop();
+        SoundManager.Instance.PlaySFX("Game Over");
         SceneManager.LoadScene(gameOverScene);
     }
 
