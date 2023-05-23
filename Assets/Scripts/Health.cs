@@ -45,7 +45,7 @@ public class Health : MonoBehaviour
         //Vector3 pushbackDirection = collision.contacts[0].normal;
         //rb.AddForce(pushbackDirection.normalized * 5f, ForceMode.Impulse);
 
-        StartCoroutine(Blink());
+        //StartCoroutine(Blink());
         return HitResult.Hit;
     }
 }
