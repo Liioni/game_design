@@ -63,7 +63,9 @@ public class Spawner : MonoBehaviour
             yield return new WaitForSeconds(telegraphTime);
             Destroy(marker);
         }
-        Instantiate(prefab, pos, Quaternion.identity);
+        if(active) {
+            Instantiate(prefab, pos, Quaternion.identity);
+        }
     }
 
     private void addCooldown() {
