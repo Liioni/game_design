@@ -49,7 +49,7 @@ public class EnemyType2 : Enemy
         for (int i = 0; i < numberOfBullets; i++)
         {
             float angle = startAngle + (i * angleStep);
-            GameObject sphere = Instantiate(bullet, transform.position, Quaternion.identity);
+            GameObject sphere = Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
             EnemyBullet variables = sphere.GetComponent<EnemyBullet>();
             Vector3 calculatedDirection = new Vector3(Mathf.Sin(Mathf.Deg2Rad * angle), 0f, Mathf.Cos(Mathf.Deg2Rad * angle));
             variables.direction = currentRotation * calculatedDirection;
