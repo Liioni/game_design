@@ -63,6 +63,10 @@ public class GameMode : MonoBehaviour
             if(waveNumber == 3 && !towerMode) {
               GameObject castle = Instantiate(castlePrefab, new Vector3(0,0,0), Quaternion.identity);
             }
+            foreach(var script in waveSpawners) {
+              script.difficulty++;
+            }
+            if(timer) Destroy(timer);
         }
     }
 
@@ -122,10 +126,8 @@ public class GameMode : MonoBehaviour
     }
 
     public void increaseDifficulty(){
-        GameObject.FindWithTag("Player").GetComponent<PlayerController>().addAvailableTowers(1);
-        foreach(var script in waveSpawners) {
-            script.difficulty++;
-        }
+      setActiveWave(true);
+      setActiveWave(false);
     }
 
     public void Loose() {
