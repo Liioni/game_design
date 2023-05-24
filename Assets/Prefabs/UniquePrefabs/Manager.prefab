@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 5206661030518263335, guid: 6308d1f665acd134cadb28ac5d6359da, type: 3}
+  scaling_factor: 1.5
   active: 0
   onBorder: 1
   timeBetweenSpawns: 6
@@ -70,6 +71,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 2316001390862386333, guid: 3302e577cad70ce4799874876b564d82, type: 3}
+  scaling_factor: 1.5
   active: 0
   onBorder: 1
   timeBetweenSpawns: 6
@@ -91,6 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 3015704629649172185, guid: e7a1bf8e732d0364ab8f7b6126b767b8, type: 3}
+  scaling_factor: 1.5
   active: 0
   onBorder: 1
   timeBetweenSpawns: 6
@@ -112,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1850503077362125822, guid: c786bead3e10ebf42b07eb2cb890d820, type: 3}
+  scaling_factor: 1.5
   active: 0
   onBorder: 0
   timeBetweenSpawns: 10
@@ -133,6 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 0}
+  scaling_factor: 1.25
   towerMode: 0
   waveNumber: 0
   coinsCollected: 0

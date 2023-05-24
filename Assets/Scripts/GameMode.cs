@@ -7,6 +7,7 @@ public class GameMode : MonoBehaviour
 {
     [SerializeField]
     UI ui;
+    public float scaling_factor = 1.5f;
     private int startMenuScene = 0;
     private int gameOverScene = 4;
     public bool towerMode;
@@ -73,6 +74,7 @@ public class GameMode : MonoBehaviour
     private void activateScripts(bool value){
         foreach(var script in waveSpawners) {
             script.setActive(value);
+            script.scaling_factor = scaling_factor;
         }
     }
 
