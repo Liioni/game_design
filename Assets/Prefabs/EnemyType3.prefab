@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 3015704629649172189}
   - component: {fileID: 5910610391276816462}
   - component: {fileID: 5907606621285545015}
+  - component: {fileID: 6084598414859029620}
   - component: {fileID: 4533136166399665258}
   - component: {fileID: 5903383289355305674}
   - component: {fileID: 1124173924854557503}
-  - component: {fileID: 6084598414859029620}
   m_Layer: 2
   m_Name: EnemyType3
   m_TagString: Enemy
@@ -66,6 +66,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: -0.15, y: 0, z: -0.00000008940697}
+--- !u!114 &6084598414859029620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3015704629649172185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c940719873066ee43a2ff091f603815a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  movementSpeed: 0
+  explosion: {fileID: 6146545414153545494, guid: 61753401622c2a947a30e2147430e97d, type: 3}
 --- !u!114 &4533136166399665258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,21 +129,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6084598414859029620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3015704629649172185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c940719873066ee43a2ff091f603815a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  movementSpeed: 0
-  explosion: {fileID: 6146545414153545494, guid: 61753401622c2a947a30e2147430e97d, type: 3}
 --- !u!1001 &7231129687017332405
 PrefabInstance:
   m_ObjectHideFlags: 0

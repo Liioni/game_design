@@ -48,6 +48,5 @@ public class EnemyBullet : MonoBehaviour
         Color newColor = renderer.material.color;
         newColor.a = newAlpha;
         renderer.material.color = newColor;
-        Debug.Log(renderer.material.color.a);
     }
 }
