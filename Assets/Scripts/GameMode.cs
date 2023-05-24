@@ -140,6 +140,7 @@ public class GameMode : MonoBehaviour
         if(!timer && _activeWave) {
             setActiveWave(false);
             increaseDifficulty();
+            GameObject.FindWithTag("Player").GetComponent<Health>().ResetHealth();
         }
     }
 }
