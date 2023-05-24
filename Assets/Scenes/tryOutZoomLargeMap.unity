@@ -327,6 +327,26 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2518503561510777587, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518503561510777587, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518503561510777587, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627306104471286443, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627306104471286443, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8909242355142543634, guid: bb1d2751179bdd84da82b907834dee97, type: 3}
       propertyPath: m_Name
       value: CanvasUI
@@ -744,7 +764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3396104884447338361, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3396104884447338361, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
       propertyPath: scalesWithDifficulty
