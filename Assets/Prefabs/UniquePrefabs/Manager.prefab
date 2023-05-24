@@ -98,7 +98,7 @@ MonoBehaviour:
   difficulty: 0
   telegraphPrefab: {fileID: 1850503077362125822, guid: 4ca11379b38052326b462d1b6654d4b0, type: 3}
   telegraphTime: 0.5
-  chaseTowerIfExists: 1
+  chaseTowerIfExists: 0
 --- !u!114 &3396104884447338363
 MonoBehaviour:
   m_ObjectHideFlags: 0

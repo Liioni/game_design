@@ -5348,10 +5348,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a9280c7b86826f4daa9f186875d04aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 20
-  fireRate: 0.4
+  range: 10
+  fireRate: 0.5
   burstSize: 3
-  cost: 30
+  cost: 10
   enemyTag: Enemy
   turnSpeed: 10
   bulletPrefab: {fileID: 5638477700184001759, guid: 09c23df2a77740844b62e9298fbf5c93, type: 3}

@@ -232,7 +232,7 @@ MonoBehaviour:
   health_bar: {fileID: 0}
   teleport_cooldown: {fileID: 0}
   isPc: 1
-  coinsCollected: 30
+  coinsCollected: 20
   turretPrefabs:
   - {fileID: 3234906509450518239, guid: 761e26497dd62df4b8c80e25bbac2926, type: 3}
   - {fileID: 8352704568136261773, guid: f47f0c5460aae314c8e6fb73ecaea8ae, type: 3}

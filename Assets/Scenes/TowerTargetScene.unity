@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657832, g: 0.49641222, b: 0.57481664, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2847,13 +2847,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4295753599329717758, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
+      propertyPath: timeBetweenSpawns
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -3876222309146799386, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
       propertyPath: difficulty
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3876222309146799386, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
       propertyPath: timeBetweenSpawns
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -3876222309146799386, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
       propertyPath: scalesWithDifficulty
@@ -2909,7 +2913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3396104884447338361, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
       propertyPath: timeBetweenSpawns
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3396104884447338361, guid: c113f0f631cf4ab72936e00385b1ff7e, type: 3}
       propertyPath: chaseTowerIfExists

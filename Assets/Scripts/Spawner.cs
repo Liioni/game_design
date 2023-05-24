@@ -78,7 +78,7 @@ public class Spawner : MonoBehaviour
     private void addCooldown() {
         float modifier = timeBetweenSpawns;
         if(scalesWithDifficulty) {
-            modifier *= Mathf.Pow(2.0f, -difficulty);
+            modifier *= Mathf.Pow(1.5f, -difficulty);
         }
         _cooldown += modifier;
     }
