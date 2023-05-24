@@ -5350,7 +5350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 20
   fireRate: 0.4
-  burstSize: 1
+  burstSize: 3
   cost: 30
   enemyTag: Enemy
   turnSpeed: 10

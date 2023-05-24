@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loot:
   - {fileID: 1850503077362125822, guid: c786bead3e10ebf42b07eb2cb890d820, type: 3}
-  lootFrequency: 0.3
+  lootFrequency: 1
 --- !u!143 &-5654871193771344927
 CharacterController:
   m_ObjectHideFlags: 0

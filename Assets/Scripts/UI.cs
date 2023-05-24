@@ -27,7 +27,7 @@ public class UI : MonoBehaviour
         string waveStatus = spawner.active ? "active"  : "inactive";
         waveText.text = "Wave " + gamemode.waveNumber.ToString();
 
-        turretsText.text = playerController.towersPlaced.ToString() + "/" + playerController.towersAvailable.ToString();
+        // turretsText.text = playerController.towersPlaced.ToString() + "/" + playerController.towersAvailable.ToString();
 
         coinsText.text = playerController.getCoinsCollected().ToString();
 
