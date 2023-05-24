@@ -56,7 +56,7 @@ MonoBehaviour:
   difficulty: 0
   telegraphPrefab: {fileID: 1850503077362125822, guid: 4ca11379b38052326b462d1b6654d4b0, type: 3}
   telegraphTime: 0.5
-  chaseTowerIfExists: 0
+  chaseTowerIfExists: 1
 --- !u!114 &-3876222309146799386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   difficulty: 0
   telegraphPrefab: {fileID: 1850503077362125822, guid: 4ca11379b38052326b462d1b6654d4b0, type: 3}
   telegraphTime: 0.5
-  chaseTowerIfExists: 0
+  chaseTowerIfExists: 1
 --- !u!114 &3396104884447338363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,3 +143,4 @@ MonoBehaviour:
   - {fileID: -3876222309146799386}
   - {fileID: 3396104884447338363}
   - {fileID: -4295753599329717758}
+  castlePrefab: {fileID: 745834580211298809, guid: 3ee0371981289ca4a90398ef98479d2f, type: 3}
