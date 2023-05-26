@@ -12,6 +12,7 @@ public enum HitResult {
 public class Health : MonoBehaviour
 {
     public int health = 1;
+    private int currentHealth;
     [SerializeField]
     private bool isPlayer;
     // public Rigidbody rb;
@@ -28,17 +29,26 @@ public class Health : MonoBehaviour
         gameObject.GetComponent<Renderer>().enabled = true;
     }
 
+    public void ResetHealth() {
+      currentHealth = health;
+      TakeDamage(0);
+    }
+
+    public void Start() {
+      currentHealth = health;
+    }
+
     public HitResult TakeDamage(int damage) {
         if(invulnTimer)
             return HitResult.Invuln;
-        health -= damage;
+        currentHealth -= damage;
         invulnTimer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
         invulnTimer.destroyGameObject = false;
         invulnTimer.life_span = invulnDuration;
         if(isPlayer){
-            gameObject.GetComponent<PlayerController>().updateHealthBar(health);
+            gameObject.GetComponent<PlayerController>().updateHealthBar(currentHealth);
         }
-        if (health <= 0) {
+        if (currentHealth <= 0) {
             return HitResult.Dead;
             // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }

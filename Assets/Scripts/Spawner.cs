@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject prefab;
+    public float scaling_factor = 1.5f;
 
     public bool active = true;
     public bool onBorder = true;
@@ -78,7 +79,7 @@ public class Spawner : MonoBehaviour
     private void addCooldown() {
         float modifier = timeBetweenSpawns;
         if(scalesWithDifficulty) {
-            modifier *= Mathf.Pow(2.0f, -difficulty);
+            modifier *= Mathf.Pow(scaling_factor, -difficulty);
         }
         _cooldown += modifier;
     }

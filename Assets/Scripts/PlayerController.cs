@@ -18,9 +18,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 movement, rotationTarget;
     
     public bool isPc;
-    public int towersAvailable = 1;
-    public int towersPlaced = 0;
-    private int coinsCollected = 30;
+    public int coinsCollected = 10;
    
     private int numTurrets = 2;
     [SerializeField]
@@ -58,8 +56,6 @@ public class PlayerController : MonoBehaviour
                 // (it is already shown on the scene so the ray will hit the turret even though it isn't placed)
                 coinsCollected -= currentPlaceableTurret.GetComponent<Turret>().GetCost();
                 currentPlaceableTurret = null;
-                towersPlaced++;
-                
             }
             return;
         } else {
@@ -73,7 +69,6 @@ public class PlayerController : MonoBehaviour
                     if(hit.tag != "Turret")
                         return;
                     currentPlaceableTurret = hit;
-                    towersPlaced--;
                     coinsCollected += currentPlaceableTurret.GetComponent<Turret>().GetCost();
                 }
             }
@@ -208,7 +203,6 @@ public class PlayerController : MonoBehaviour
         if(currentPlaceableTurret == null){
             if(selectedTurretPrefab.GetComponent<Turret>().GetCost() <= coinsCollected){
                 currentPlaceableTurret = Instantiate(selectedTurretPrefab);
-                currentPlaceableTurret.GetComponent<Turret>().burstSize = 2 + towersAvailable;
             }
         }
         else if(currentPlaceableTurret != null){
@@ -229,10 +223,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-    }
-
-    public void addAvailableTowers(int value){
-        towersAvailable += value;
     }
 
     public void setMovable(bool value){

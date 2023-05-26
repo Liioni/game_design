@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 5206661030518263335, guid: 6308d1f665acd134cadb28ac5d6359da, type: 3}
+  scaling_factor: 1.5
   active: 0
   onBorder: 1
   timeBetweenSpawns: 6
@@ -56,7 +57,7 @@ MonoBehaviour:
   difficulty: 0
   telegraphPrefab: {fileID: 1850503077362125822, guid: 4ca11379b38052326b462d1b6654d4b0, type: 3}
   telegraphTime: 0.5
-  chaseTowerIfExists: 0
+  chaseTowerIfExists: 1
 --- !u!114 &-3876222309146799386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,6 +71,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 2316001390862386333, guid: 3302e577cad70ce4799874876b564d82, type: 3}
+  scaling_factor: 1.5
   active: 0
   onBorder: 1
   timeBetweenSpawns: 6
@@ -91,6 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 3015704629649172185, guid: e7a1bf8e732d0364ab8f7b6126b767b8, type: 3}
+  scaling_factor: 1.5
   active: 0
   onBorder: 1
   timeBetweenSpawns: 6
@@ -112,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1850503077362125822, guid: c786bead3e10ebf42b07eb2cb890d820, type: 3}
+  scaling_factor: 1.5
   active: 0
   onBorder: 0
   timeBetweenSpawns: 10
@@ -133,6 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 0}
+  scaling_factor: 1.25
   towerMode: 0
   waveNumber: 0
   coinsCollected: 0
@@ -143,3 +148,4 @@ MonoBehaviour:
   - {fileID: -3876222309146799386}
   - {fileID: 3396104884447338363}
   - {fileID: -4295753599329717758}
+  castlePrefab: {fileID: 745834580211298809, guid: 3ee0371981289ca4a90398ef98479d2f, type: 3}

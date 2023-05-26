@@ -7,6 +7,7 @@ public class GameMode : MonoBehaviour
 {
     [SerializeField]
     UI ui;
+    public float scaling_factor = 1.5f;
     private int startMenuScene = 0;
     private int gameOverScene = 4;
     public bool towerMode;
@@ -21,9 +22,11 @@ public class GameMode : MonoBehaviour
     private float[] waveLength;
     private float maxWaveLength = 60f;
 
+    public GameObject castlePrefab;
+
     private GameObject[] enemies;
     private GameObject[] turrets;
-    void setActiveWave(bool newVal) { 
+    void setActiveWave(bool newVal) {
         _activeWave = newVal;
         activateScripts(newVal);
         if(newVal){
@@ -35,6 +38,15 @@ public class GameMode : MonoBehaviour
             timer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
             timer.destroyGameObject = false;
             timer.life_span = 30;
+            if(timer) Destroy(timer);
+            timer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
+            timer.destroyGameObject = false;
+            if (waveNumber > waveLength.Length) {
+                timer.life_span = maxWaveLength;
+            }
+            else {
+                timer.life_span = waveLength[waveNumber - 1];
+            }
         } else {
             SoundManager.Instance.musicSource.Stop();
             SoundManager.Instance.PlayMusic("Main Theme");
@@ -49,23 +61,20 @@ public class GameMode : MonoBehaviour
             }
             enemies = null;
             ui.setButtonsActive(true);
-        }
-        if(newVal) {
+            if(waveNumber == 3 && !towerMode) {
+              GameObject castle = Instantiate(castlePrefab, new Vector3(0,0,0), Quaternion.identity);
+            }
+            foreach(var script in waveSpawners) {
+              script.difficulty++;
+            }
             if(timer) Destroy(timer);
-            timer = gameObject.AddComponent(typeof(ObjectLifetime)) as ObjectLifetime;
-            timer.destroyGameObject = false;
-            if (waveNumber > waveLength.Length) {
-                timer.life_span = maxWaveLength;
-            }
-            else {
-                timer.life_span = waveLength[waveNumber - 1];
-            }
         }
     }
 
     private void activateScripts(bool value){
         foreach(var script in waveSpawners) {
             script.setActive(value);
+            script.scaling_factor = scaling_factor;
         }
     }
 
@@ -119,10 +128,8 @@ public class GameMode : MonoBehaviour
     }
 
     public void increaseDifficulty(){
-        GameObject.FindWithTag("Player").GetComponent<PlayerController>().addAvailableTowers(1);
-        foreach(var script in waveSpawners) {
-            script.difficulty++;
-        }
+      setActiveWave(true);
+      setActiveWave(false);
     }
 
     public void Loose() {
@@ -135,6 +142,7 @@ public class GameMode : MonoBehaviour
         if(!timer && _activeWave) {
             setActiveWave(false);
             increaseDifficulty();
+            GameObject.FindWithTag("Player").GetComponent<Health>().ResetHealth();
         }
     }
 }

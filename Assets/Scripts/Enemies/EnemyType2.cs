@@ -69,9 +69,10 @@ public class EnemyType2 : Enemy
         {
             if (timer >= bulletInterval)
             {
+                SoundManager.Instance.PlaySFX("Enemy2 Shoot");
                 SpawnCircleOfBullets(amountOfBullets);
                 timer = 0f;
-                SoundManager.Instance.PlaySFX("Enemy Shoot");
+                
             }
         }
     }
